@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
+import { WatchLaterProvider } from './Context/WatchlaterContext';
 
 ReactDOM.render(
   <React.StrictMode>
+    <WatchLaterProvider>
     <Router>
     <App />
     </Router>
+    </WatchLaterProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

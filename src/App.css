@@ -58,7 +58,7 @@
 }
 
 .headerInput{
-  width: 20rem;
+  width: 40rem;
 } 
 .headerInput input{
   width: 100%;
@@ -67,7 +67,7 @@
 } 
 
 .IconText{
-  width: 9rem;
+  width: 11rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -103,18 +103,19 @@
 display: grid;
 grid-template-columns:  auto auto auto auto auto;
 grid-column-gap: 14px;
+grid-row-gap: 14px;
 width: 98%;
 }
 .Card{
   margin-top: 5rem;
   border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   text-align: left;
   font-weight: bolder;
   color: black;
-
-
-
-
 }
 
 .roundedAvatar{
@@ -127,4 +128,36 @@ width: 98%;
 .title img{
   margin-left: 0.2rem;
   margin-right: 0.8rem;
+}
+.watchlater{
+  width: 98%;
+  padding: 0.1rem;
+  font-size: 15px;
+  text-align:center;
+  margin-top: 1rem;
+  border: 1px solid black;
+  border-radius: 0.1rem;
+  color: black;
+
+}
+.notification {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 1px 6px;
+  border-radius: 50%;
+  background: white;
+  color:black;
 }
