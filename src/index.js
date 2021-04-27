@@ -5,13 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import { WatchLaterProvider } from './Context/WatchlaterContext';
+import { HistoryContextProvider } from './Context/HistoryContext';
 
 ReactDOM.render(
   <React.StrictMode>
+
     <WatchLaterProvider>
+    <HistoryContextProvider>
     <Router>
     <App />
     </Router>
+    </HistoryContextProvider>
     </WatchLaterProvider>
   </React.StrictMode>,
   document.getElementById('root')

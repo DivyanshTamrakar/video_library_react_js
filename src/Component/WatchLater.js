@@ -1,4 +1,6 @@
+import React from 'react'
 import { useWatch } from "../Context/WatchlaterContext";
+import ReactPlayer from 'react-player'
 export default function WatchLater(){
     const {itemInlater,setIteminlater} = useWatch();
     
@@ -18,7 +20,7 @@ export default function WatchLater(){
                    return(
                         <div className="Card">
                         <span>
-                        <iframe width="258px" height="145px" src="https://www.youtube.com/embed/1k10z9mL7Ik" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <ReactPlayer url="https://youtu.be/7_zMZ4W6kTQ" width="258px" height="145px"/>
                         </span>
                         <div className="title">
                         {<img className="roundedAvatar"  src={item.avatar} height="30px" width="30px"/> }
