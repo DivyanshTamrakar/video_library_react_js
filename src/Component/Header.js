@@ -25,14 +25,36 @@ export default function Header(){
     
     <div className="iconsbox">
 
-   <a href="#" class="notification">
+
+   <div style={{display:"block"}}>
+    <span style={{display:"block"}}>
+    <a href="#" class="notification">
    <Link to="/watch-later"><i class="fa fa-music cursor"></i></Link>
    {
        itemInlater.length !==0 ?<span class="badge">{itemInlater.length}</span> : <div></div> 
    }
    </a>
-    <Link to="/playlist"><i class="fa fa-music cursor"></i></Link>
-    <Link to="/history"><i class="fa fa-history cursor"></i></Link>
+    </span>
+    <span style={{display:"block",fontWeight:"bolder",}}>Watch Later</span>
+    </div>
+   
+
+
+
+
+
+
+    <div style={{display:"block"}}>
+    <span style={{display:"block"}}><Link to="/playlist"><i class="fa fa-music cursor"></i></Link></span>
+    <span style={{display:"block",fontWeight:"bolder",}}>PlayList</span>
+    </div>
+    
+    <div style={{display:"block"}}>
+    <span style={{display:"block"}}><Link to="/history"><i class="fa fa-history cursor"></i></Link></span>
+    <span style={{display:"block",fontWeight:"bolder",}}>History</span>
+    </div>
+
+
     </div>
 
 

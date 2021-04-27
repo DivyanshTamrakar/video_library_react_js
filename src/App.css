@@ -58,7 +58,7 @@
 }
 
 .headerInput{
-  width: 40rem;
+  width: 35rem;
 } 
 .headerInput input{
   width: 100%;
@@ -73,7 +73,7 @@
   justify-content: space-between;
   }
 .iconsbox{
-  width:8rem;
+  width:16rem;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
@@ -160,4 +160,12 @@ width: 98%;
   border-radius: 50%;
   background: white;
   color:black;
+}
+.WatcLaterFrame{
+  display: grid;
+  grid-template-columns: 19.4% 19.4% 19.4% 19.4% 19.4%;
+  grid-column-gap: 14px;
+  grid-row-gap: 14px;
+  width: 98%;
+
 }
