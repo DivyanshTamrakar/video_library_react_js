@@ -1,0 +1,172 @@
+*{
+  margin: 0rem;
+  padding: 0rem;
+
+}
+.App {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header{
+  width: 98%;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  border: 1px solid black;
+  justify-content: space-between;
+  position: fixed;
+  background-color: rgb(255, 51, 51);
+
+}
+
+.headerInput{
+  width: 35rem;
+} 
+.headerInput input{
+  width: 100%;
+  padding: 0.28rem;
+
+} 
+
+.IconText{
+  width: 11rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  }
+.iconsbox{
+  width:16rem;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+.cursor{
+  cursor: pointer;
+}
+.h3{
+  text-decoration: none;
+  color: black;
+  margin: auto;
+
+}
+.fa{
+  color: black;
+}
+.fa-history:before {
+  content: "\f1da";
+  font-size: 1.5rem;
+}
+.fa-music:before {
+  content: "\f001";
+  font-size: 1.5rem;
+}
+.GridFrame{
+display: grid;
+grid-template-columns:  auto auto auto auto auto;
+grid-column-gap: 14px;
+grid-row-gap: 14px;
+width: 98%;
+}
+.Card{
+  margin-top: 5rem;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  text-align: left;
+  font-weight: bolder;
+  color: black;
+}
+
+.roundedAvatar{
+  border-radius: 500rem;
+}
+.title{
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+}
+.title img{
+  margin-left: 0.2rem;
+  margin-right: 0.8rem;
+}
+.watchlater{
+  width: 98%;
+  padding: 0.1rem;
+  font-size: 15px;
+  text-align:center;
+  margin-top: 1rem;
+  border: 1px solid black;
+  border-radius: 0.1rem;
+  color: black;
+
+}
+.notification {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 1px 6px;
+  border-radius: 50%;
+  background: white;
+  color:black;
+}
+.WatcLaterFrame{
+  display: grid;
+  grid-template-columns: 19.4% 19.4% 19.4% 19.4% 19.4%;
+  grid-column-gap: 14px;
+  grid-row-gap: 14px;
+  width: 98%;
+
+}
