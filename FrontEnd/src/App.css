@@ -53,6 +53,7 @@
   border: 1px solid black;
   justify-content: space-between;
   position: fixed;
+  top: 0rem;
   background-color: rgb(255, 51, 51);
 
 }
@@ -169,4 +170,28 @@ width: 98%;
   grid-row-gap: 14px;
   width: 98%;
 
+}
+.WatchVideoPage{
+  margin: 4.7rem 5.4rem 1rem 5.4rem;
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+.left-section{
+  text-align: left;
+}
+.right-section{
+}
+
+
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  margin: 0.2rem;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: grey;
+  color: white;
 }

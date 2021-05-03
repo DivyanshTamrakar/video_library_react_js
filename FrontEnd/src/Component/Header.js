@@ -35,7 +35,7 @@ export default function Header(){
    }
    </a>
     </span>
-    <span style={{display:"block",fontWeight:"bolder",}}>Watch Later</span>
+    {/* <span style={{display:"block",fontWeight:"bolder",}}>Watch Later</span> */}
     </div>
    
 
@@ -46,12 +46,12 @@ export default function Header(){
 
     <div style={{display:"block"}}>
     <span style={{display:"block"}}><Link to="/playlist"><i class="fa fa-music cursor"></i></Link></span>
-    <span style={{display:"block",fontWeight:"bolder",}}>PlayList</span>
+    {/* <span style={{display:"block",fontWeight:"bolder",}}>PlayList</span> */}
     </div>
     
     <div style={{display:"block"}}>
     <span style={{display:"block"}}><Link to="/history"><i class="fa fa-history cursor"></i></Link></span>
-    <span style={{display:"block",fontWeight:"bolder",}}>History</span>
+    {/* <span style={{display:"block",fontWeight:"bolder",}}>History</span> */}
     </div>
 
 

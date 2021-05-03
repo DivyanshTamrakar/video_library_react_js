@@ -25,7 +25,7 @@ export default function Video(){
                
            arr.map(function(item){
                    return(
-                      <Link to={`/watch/${ item.videoid}`}>
+                      <Link to={`/watch/${ item.videoid}`} state={{item}}>
                          <div key={item.id} className="Card">
                         <span>
                         <ReactPlayer url={item.url} light={true} width="258px" height="145px"/>
