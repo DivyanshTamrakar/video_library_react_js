@@ -195,3 +195,28 @@ width: 98%;
   background-color: grey;
   color: white;
 }
+.HistoryFrame{
+  margin-left: 10.75rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 5rem;
+
+}
+.history-card{
+  max-width: 35rem;
+  margin-top: 0.5rem;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  text-align: left;
+  font-weight: bolder;
+  color: black;
+}
+
+.history-detail{
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+

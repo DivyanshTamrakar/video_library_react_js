@@ -1,20 +1,40 @@
+import { useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import { useLocation, useParams } from 'react-router-dom';
+import { useHistory } from '../Context/HistoryContext';
+import { arr } from "./dataArray";
 export default function WatchVideo(){
     let { videoId } = useParams();
-    let { state } = useLocation();
-    let recomend = state.item.recommmend;
-    console.log(recomend);
+    const {itemInhistoy,setIteminhistory,} = useHistory();
+
+    // find by videoId from data and the data is come from database not from stete which we used to do earlier .
+    const result  = arr.find(element => element.videoid === videoId);
+    let recomend = result.recommmend;
+    
+    // Add this data to history context
+    useEffect(()=>{
+      setIteminhistory([...itemInhistoy,result]);
+      console.log(itemInhistoy.length);
+    },[]);
+  
+
+
+
+      
+
+
+
+
     return(
             <div className="WatchVideoPage">
            <div className="left-section">
            <ReactPlayer playing={true} url={`https://youtu.be/${videoId}`} controls={true} height="413px" width="729px"/>
-            <small style={{color:"blue"}}>{state.item.hashtag}</small>
-            <h2>{state.item.title}</h2>
+            <small style={{color:"rgb(54,139,188)"}}>{result.hashtag}</small>
+            <h2>{result.title}</h2>
             <span style={{display:'inline'}}>
-            <small>{state.item.views} views</small>
+            <small>{result.views} views</small>
             <small>•</small>
-            <small>{state.item.releaseDate}</small>
+            <small>{result.releaseDate}</small>
             </span>
            </div>
 
