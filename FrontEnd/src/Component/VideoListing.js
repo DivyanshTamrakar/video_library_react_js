@@ -1,8 +1,6 @@
-import { useState } from "react";
 import React from 'react'
 import ReactPlayer from 'react-player'
 import { arr } from "./dataArray";
-import { useWatch } from "../Context/WatchlaterContext";
 import { Link } from "react-router-dom";
 
 

@@ -12,9 +12,9 @@ export default function History(){
    <div style={{textAlign:"left"}}>
      <b>Watch History</b>
    </div>{
-           itemInhistoy.reverse().map(function(item){
+           itemInhistoy.map(function(item){
                    return(
-                        <div className="history-card">
+                        <div key={item.id} className="history-card">
                         <span>
                         <ReactPlayer url={`${item.url}`} width="258px" height="145px"/>
                         </span>
