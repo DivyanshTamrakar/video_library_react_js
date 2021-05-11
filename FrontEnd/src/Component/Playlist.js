@@ -1,4 +1,13 @@
 export default function Playlist(){
-    return <h1>Divyansh</h1>;
+    return ( <div>
+        <div>
+            Create Playlist 
+           </div>
+
+
+
+
+
+    </div>);
 }
 

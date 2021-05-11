@@ -11,8 +11,7 @@ export default function History(){
 
    <div style={{textAlign:"left"}}>
      <b>Watch History</b>
-   </div>{
-           itemInhistoy.map(function(item){
+   </div>{ itemInhistoy.map(function(item){
                    return(
                         <div key={item.id} className="history-card">
                         <span>
@@ -23,9 +22,7 @@ export default function History(){
                         </div>
                        
                         </div>
-                   );
-               })
-           }</div>
+                   ); })}</div>
 
         <div className="history-right"></div>
     

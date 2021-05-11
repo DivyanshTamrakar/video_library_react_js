@@ -10,7 +10,6 @@ export default function Video(){
     return(
         <div className="GridFrame">
            {
-               
                arr.map(function(item){
                    return(
                       <Link to={`/watch/${ item.videoid}`} >
