@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactPlayer from 'react-player'
-import { arr } from "./dataArray";
+import { arr } from "../VideoData/dataArray";
 import { Link } from "react-router-dom";
+import { getData } from '../AxiosCall/fetchApi';
 
 
 
 
 export default function Video(){
+
+
+    useEffect(()=>{
+        getAllVideos();
+    },[]);
+
+
+    async function getAllVideos(){
+        try{
+            let response  = await getData('/videos');
+            // console.log(response);
+        }catch(e){
+            console.error(e);
+        }
+    }
+
+
+
+
+
+
+
     return(
         <div className="GridFrame">
            {

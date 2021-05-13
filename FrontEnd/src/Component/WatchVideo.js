@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import ReactPlayer from 'react-player';
-import { useLocation, useParams,Link } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 import { useHistory } from '../Context/HistoryContext';
-import { arr } from "./dataArray";
+import { arr } from "../VideoData/dataArray";
+
+
 export default function WatchVideo(){
     let { videoId } = useParams();
     const {itemInhistoy,setIteminhistory,} = useHistory();
@@ -40,7 +42,14 @@ export default function WatchVideo(){
            </div>
 
          <div className="right-section">
-         {recomend.map(function(item){ return (<div class="chip"> {item} </div>); })}
+
+
+         {recomend.map(function(item){ return (
+       <div class="chip"> {item} </div>
+         ); })}
+  
+  
+  
   
          <div className="history-left-watch">
 
