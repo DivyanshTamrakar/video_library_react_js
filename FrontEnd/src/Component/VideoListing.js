@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import ReactPlayer from 'react-player'
-import { arr } from "../VideoData/dataArray";
+import { arr } from "../Utils/dataArray";
 import { Link } from "react-router-dom";
-import { getData } from '../AxiosCall/fetchApi';
+import { getData } from '../Utils/fetchApi';
 
 
 

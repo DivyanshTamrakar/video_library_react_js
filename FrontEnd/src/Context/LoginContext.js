@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
-import { postData,getData } from "../AxiosCall/fetchApi";
+import { postData,getData } from "../Utils/fetchApi";
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,6 +9,7 @@ export const AuthContext = createContext();
 export function AuthProvieder({children}){
 
     const [login,setlogin] = useState(false);
+   
 
     
     async function LoginWithCredential(email, password){
@@ -23,7 +24,7 @@ export function AuthProvieder({children}){
           setlogin(true);
           localStorage.setItem('userId',response['user']['uid']);
           localStorage.setItem('name',response['user']['name']);
-          toast.success(response.message);
+          return toast.success(response.message);
        }
        else{
            return toast.error(response.message);

@@ -1,10 +1,14 @@
 import  {useAuth} from "../Context/LoginContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate,useLocation  } from "react-router-dom";
+import {useNavigate,useLocation, Link  } from "react-router-dom";
 import React, { useState } from "react";
- import {appStyle,formStyle,inputStyle,labelStyle,submitStyle} from '../Login_Form/logindesign'
+ import {appStyle,formStyle,inputStyle,labelStyle,submitStyle} from '../Utils/logindesign'
+ const alignment = {
+  textAlign:'left',
+  marginLeft:'1.2rem'
 
+};
 
 
 export default function Login(){
@@ -17,8 +21,9 @@ export default function Login(){
 
     function ClickHandler(event){
         event.preventDefault();
-        LoginWithCredential(user,pass);
-        navigate(state?.from? state.from:'/login')
+         LoginWithCredential(user,pass);
+        
+        // navigate(state?.from? state.from:'/login')
  }
 
  function Logouthandler(){
@@ -28,22 +33,29 @@ export default function Login(){
  }
 
     return (
-    <>
+    <div className="LoginFrame">
     {
         login
         ? <button  onClick={Logouthandler}style={submitStyle}>Logout</button>
         :     <div style={appStyle}> 
         <form style={formStyle} >
             
+        <div style={alignment}><small ><b>Username:</b></small></div>
          <input  onChange={(text)=>{
                     user = text.target.value;
                  }} label="Username:" type="text" />
+                 <div style={alignment}><small ><b>Password:</b></small></div>
          <input  onChange={(text)=>{
                      pass = text.target.value;
                  }} label="Password:" type="password" />
          <div>
            <button onClick={ClickHandler} style={submitStyle} type="submit">Login</button>
          </div>
+
+         <div>
+           <Link to="/signup"><button style={submitStyle}>Register Yourself</button></Link>
+         </div>
+
        </form>
  </div>
         
@@ -62,7 +74,7 @@ export default function Login(){
     pauseOnHover
     />
     </div>
-    </>
+    </div>
        
         );
 }

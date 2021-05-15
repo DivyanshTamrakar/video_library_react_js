@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import { useParams,Link } from 'react-router-dom';
 import { useHistory } from '../Context/HistoryContext';
-import { arr } from "../VideoData/dataArray";
+import { arr } from "../Utils/dataArray";
 
 
 export default function WatchVideo(){

@@ -5,6 +5,7 @@ import WatchLater  from "./Component/WatchLater";
 import Playlist  from "./Component/Playlist";
 import History  from "./Component/History";
 import WatchVideo from "./Component/WatchVideo"
+import Signup from "./Component/SignUp"
 import Login from "./Component/Login"
 import {  Routes,Route,Navigate} from "react-router-dom";
 import { useAuth } from './Context/LoginContext';
@@ -31,6 +32,7 @@ function App() {
           <PrivateRoute path="/history" element={<History/>}/>
           <Route path="/watch/:videoId" element={<WatchVideo/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
           </Routes>
 
 
