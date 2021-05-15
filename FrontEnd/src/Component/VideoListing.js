@@ -18,7 +18,7 @@ export default function Video(){
     async function getAllVideos(){
         try{
             let response  = await getData('/videos');
-            // console.log(response);
+            console.log(response);
         }catch(e){
             console.error(e);
         }

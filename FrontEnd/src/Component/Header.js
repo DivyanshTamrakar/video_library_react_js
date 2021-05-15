@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import { useWatch } from "../Context/WatchlaterContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock,faMusic,faHistory,faBars } from '@fortawesome/free-solid-svg-icons'
+import { faClock,faMusic,faHistory,faBars,faUser } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -48,6 +48,12 @@ export default function Header(){
     
     <div style={{display:"block"}}>
     <span style={{display:"block"}}><Link to="/history"><FontAwesomeIcon icon={faHistory}  size='lg' color='white'/></Link></span>
+    </div>
+
+    <div>
+
+    <Link to='/login'><FontAwesomeIcon icon={faUser}  size='lg' color='white' /></Link>
+
     </div>
 
 

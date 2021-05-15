@@ -6,18 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import { WatchLaterProvider } from './Context/WatchlaterContext';
 import { HistoryContextProvider } from './Context/HistoryContext';
+import { AuthProvieder } from './Context/LoginContext';
+
 
 ReactDOM.render(
   <React.StrictMode>
-
-    <WatchLaterProvider>
+<AuthProvieder>
+<WatchLaterProvider>
     <HistoryContextProvider>
     <Router>
     <App />
     </Router>
     </HistoryContextProvider>
     </WatchLaterProvider>
-  </React.StrictMode>,
+</AuthProvieder>
+ </React.StrictMode>,
   document.getElementById('root')
 );
 
