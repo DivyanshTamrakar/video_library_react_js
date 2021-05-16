@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 import { arr } from "../Utils/dataArray";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { getData } from '../Utils/fetchApi';
 
 
 export default function Video(){
+    const [videodata,setvideodata] = useState([]);
 
 
     useEffect(()=>{
@@ -18,7 +19,8 @@ export default function Video(){
     async function getAllVideos(){
         try{
             let response  = await getData('/videos');
-            console.log(response);
+            setvideodata(response.videos);
+
         }catch(e){
             console.error(e);
         }
@@ -33,7 +35,8 @@ export default function Video(){
     return(
         <div className="GridFrame">
            {
-               arr.map(function(item){
+               videodata.map(function(item){
+                   console.log(item._id);
                    return(
                       <Link to={`/watch/${ item.videoid}`} >
                          <div key={item.id} className="Card">

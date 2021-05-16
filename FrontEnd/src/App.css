@@ -129,19 +129,18 @@
 
 .GridFrame {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
-  grid-column-gap: 14px;
-  grid-row-gap: 41px;
-  margin: 5rem 1rem 1rem 1rem;
+  grid-template-columns: auto auto auto auto auto ;
+  grid-column-gap: 4px;
+  grid-row-gap: 35px;
+  margin: 5rem 1rem 1rem 1em;
 }
 
 .Card {
-  margin-top: 0px;
+  margin-right: 1rem;
   border: 1px solid grey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   text-align: left;
   font-weight: bolder;
   color: black;
@@ -153,6 +152,7 @@
 
 .title {
   margin-top: 0.5rem;
+  
   display: flex;
   flex-direction: row;
 }

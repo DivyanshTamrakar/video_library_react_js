@@ -2,8 +2,8 @@ import  {useAuth} from "../Context/LoginContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate,useLocation, Link  } from "react-router-dom";
-import React, { useState } from "react";
- import {appStyle,formStyle,inputStyle,labelStyle,submitStyle} from '../Utils/logindesign'
+import React from "react";
+ import {appStyle,formStyle,submitStyle} from '../Utils/logindesign'
  const alignment = {
   textAlign:'left',
   marginLeft:'1.2rem'
@@ -16,8 +16,8 @@ export default function Login(){
     const {login,LoginWithCredential,setlogin} = useAuth();
     let user = "";
     let pass = "";
-    const { state } = useLocation();
-    const navigate =  useNavigate();
+    // const { state } = useLocation();
+    // const navigate =  useNavigate();
 
     function ClickHandler(event){
         event.preventDefault();
