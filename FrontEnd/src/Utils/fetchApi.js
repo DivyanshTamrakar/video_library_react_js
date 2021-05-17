@@ -7,6 +7,7 @@ export const url = "https://VideoAppBackend.divyanshtamraka.repl.co";
 // export const userId = localStorage.getItem('userId');
 export async  function getData(...endpoints){
   let final_url = `${url}${endpoints}`;
+  console.log(final_url);
     try{
         let response = await axios.get(final_url);
         const resultData = response.data;

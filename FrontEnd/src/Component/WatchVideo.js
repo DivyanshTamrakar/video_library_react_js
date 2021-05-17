@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
+import { getData} from "../Utils/fetchApi";
 import { useParams,Link } from 'react-router-dom';
 import { useHistory } from '../Context/HistoryContext';
 import { arr } from "../Utils/dataArray";
@@ -7,18 +8,35 @@ import { arr } from "../Utils/dataArray";
 
 export default function WatchVideo(){
     let { videoId } = useParams();
+    const [result,setresult] = useState([]);
+    const [recommend,setrecommend] = useState([]);
     const {itemInhistoy,setIteminhistory,} = useHistory();
-    
 
-    // find by videoId from data and the data is come from database not from stete which we used to do earlier .
-    const result  = arr.find(element => element.videoid === videoId);
-    let recomend = result.recommmend;
+
+
     
-    // Add this data to history context
     useEffect(()=>{
-      setIteminhistory([...itemInhistoy,result]);
-      console.log(itemInhistoy.length);
-    },[]);
+      getAllVideos();
+      
+  },[]);
+
+
+  async function getAllVideos(){
+      try{
+          let response  = await getData(`/videos/${videoId}`);
+          setresult(response.video);
+          setrecommend(response.video.recommmend)
+
+      }catch(e){
+          console.error(e);
+      }
+  }
+    
+    // // Add this data to history context
+    // useEffect(()=>{
+    //   setIteminhistory([...itemInhistoy,result]);
+    //   console.log(itemInhistoy.length);
+    // },[]);
   
 
 
@@ -35,16 +53,16 @@ export default function WatchVideo(){
             <small style={{color:"rgb(54,139,188)"}}>{result.hashtag}</small>
             <h2>{result.title}</h2>
             <span style={{display:'inline'}}>
-            <small>{result.views} views</small>
-            <small>•</small>
-            <small>{result.releaseDate}</small>
+            <small><b>{result.views} views</b></small>
+            <small> • </small>
+            <small><b>{result.releaseDate}</b></small>
             </span>
            </div>
 
          <div className="right-section">
 
 
-         {recomend.map(function(item){ return (
+         {recommend.map(function(item){ return (
        <div class="chip"> {item} </div>
          ); })}
   
