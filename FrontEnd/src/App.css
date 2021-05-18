@@ -129,7 +129,7 @@
 
 .GridFrame {
   display: grid;
-  grid-template-columns: auto auto auto auto auto ;
+  grid-template-columns: auto auto auto auto auto;
   grid-column-gap: 4px;
   grid-row-gap: 35px;
   margin: 5rem 1rem 1rem 1em;
@@ -152,7 +152,7 @@
 
 .title {
   margin-top: 0.5rem;
-  
+
   display: flex;
   flex-direction: row;
 }
@@ -287,4 +287,18 @@
 
 .LoginFrame {
   margin: 4rem 1rem 1rem 1rem;
+}
+
+.info-bar {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.actions {
+  width: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
