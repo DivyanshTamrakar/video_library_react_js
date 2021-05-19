@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Toast } from "../Utils/Toast";
 import ReactPlayer from 'react-player';
 import { getData,postData} from "../Utils/fetchApi";
 import { useParams,Link } from 'react-router-dom';
 import { useHistory } from '../Context/HistoryContext';
 import { arr } from "../Utils/dataArray";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp,faThumbsDown, faClock,faPlusSquare,faCheck } from '@fortawesome/free-solid-svg-icons'
+import { font } from '../Utils/FontAwesome';
 
 
 export default function WatchVideo(){
@@ -30,12 +31,8 @@ export default function WatchVideo(){
         url: result.url,
         releaseDate: result.releaseDate
       };
-
-
-      console.log(body);
       try{
         let response = await postData(body,'/watchlater');
-        console.log(response);
         if(response['success'] === true){
          setwatchlater(!watchlater);
          return toast.success(response.message);
@@ -102,13 +99,10 @@ export default function WatchVideo(){
                    </div>
 
                    <div className="actions"> 
-        
-                   <FontAwesomeIcon className='cursor' icon={faThumbsUp}  size='lg' color='black' />
-                   <FontAwesomeIcon className='cursor' icon={faThumbsDown}  size='lg' color='black' />
-                   {watchlater ? 
-                   <FontAwesomeIcon className='cursor'  icon={faCheck}  size='lg' color= {'black'} />:
-                   <FontAwesomeIcon  onClick={AddHandler}  className='cursor'  icon={faClock}  size='lg' color= {'black'} />}
-                   <FontAwesomeIcon className='cursor' icon={faPlusSquare}  size='lg' color='black' />
+                   <span>{font(faThumbsUp)}</span>
+                   <span>{font(faThumbsDown)}</span>
+                   { watchlater ?  <span>{font(faCheck)}</span> : <span onClick={AddHandler}>{font(faClock)}</span> }
+                   <span>{font(faPlusSquare)}</span>
         
                    </div>
         
@@ -153,17 +147,7 @@ export default function WatchVideo(){
          </div>
     
     <div>
-    <ToastContainer
-    position="bottom-center"
-    autoClose={1000}
-    hideProgressBar={true}
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    />
+   {Toast()}
     </div>
     
     

@@ -1,8 +1,9 @@
 import  {useAuth} from "../Context/LoginContext";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate,useLocation, Link  } from "react-router-dom";
 import React from "react";
+import {Toast} from "../Utils/Toast"
  import {appStyle,formStyle,submitStyle} from '../Utils/logindesign'
  const alignment = {
   textAlign:'left',
@@ -62,17 +63,7 @@ export default function Login(){
     }
     <div>
     
-    <ToastContainer
-    position="bottom-center"
-    autoClose={1000}
-    hideProgressBar={true}
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    />
+    {Toast()}
     </div>
     </div>
        

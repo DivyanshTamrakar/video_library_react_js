@@ -7,19 +7,13 @@ import History  from "./Component/History";
 import WatchVideo from "./Component/WatchVideo"
 import Signup from "./Component/SignUp"
 import Login from "./Component/Login"
-import {  Routes,Route,Navigate} from "react-router-dom";
-import { useAuth } from './Context/LoginContext';
+import { PrivateRoute } from "./PrivateRoutes/privateroutes";
+import {  Routes,Route} from "react-router-dom";
 
 
 
 function App() {
-  const {login,setlogin} = useAuth();
-
-  function PrivateRoute({path, ...props}){
-    return login ? <Route path={path} {...props}/>:<Navigate state={{from:path}} replace to='/login'/>;
-    
-
-  } 
+  
 
 
   return (
