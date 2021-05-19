@@ -13,8 +13,6 @@ import {  Routes,Route} from "react-router-dom";
 
 
 function App() {
-  
-
 
   return (
     <div className="App">
@@ -22,16 +20,12 @@ function App() {
           <Routes>
           <Route path="/" element={<Video/>}/>
           <PrivateRoute path="/watch-later" element={<WatchLater/>}/>
-          <Route path="/playlist" element={<Playlist/>}/>
           <PrivateRoute path="/history" element={<History/>}/>
+          <Route path="/playlist" element={<Playlist/>}/>
           <Route path="/watch/:videoId" element={<WatchVideo/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           </Routes>
-
-
-
-
     </div>
   );
 }

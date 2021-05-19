@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
-import { arr } from "../Utils/dataArray";
+import { useAuth } from "../Context/LoginContext";
 import { Link } from "react-router-dom";
 import { getData } from '../Utils/fetchApi';
 
@@ -9,12 +9,15 @@ import { getData } from '../Utils/fetchApi';
 
 export default function Video(){
     const [videodata,setvideodata] = useState([]);
+    const { check } =  useAuth();
 
 
     useEffect(()=>{
         getAllVideos();
     },[]);
 
+
+    check();
 
     async function getAllVideos(){
         try{
@@ -25,12 +28,6 @@ export default function Video(){
             console.error(e);
         }
     }
-
-
-
-
-
-
 
     return(
         <div className="GridFrame">

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 export const appStyle = {
 	height: '250px',
   	display: 'flex',
@@ -44,3 +43,4 @@ export const submitStyle = {
     cursor:'pointer'
 };
 
+export const alignment = { textAlign:'left', marginLeft:'1.2rem' };
