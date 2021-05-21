@@ -25,7 +25,6 @@ export default function WatchVideo(){
     async function AddHandler(){
       const body = {
         videostreamid: result.videoid,
-        videoid:result._id,
         userId:userId,
         title: result.title,
         url: result.url,

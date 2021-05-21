@@ -197,11 +197,14 @@
 }
 
 .WatcLaterFrame {
+  margin-top: 5rem;
+  margin-left: 3rem;
   display: grid;
   grid-template-columns: 19.4% 19.4% 19.4% 19.4% 19.4%;
   grid-column-gap: 14px;
   grid-row-gap: 14px;
   width: 98%;
+  
 
 }
 
