@@ -16,6 +16,7 @@ export default function Login(){
 
     useEffect(()=>{
       check();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
  
     function Logouthandler(){

@@ -6,7 +6,7 @@ import { faClock,faMusic,faHistory,faBars,faUser } from '@fortawesome/free-solid
 
 
 export default function Header(){
-    const {itemInlater,setIteminlater} = useWatch();
+    const {itemInlater} = useWatch();
     return(
         <div className="header">
 
@@ -33,14 +33,13 @@ export default function Header(){
 
    <div style={{display:"block"}}>
     <span style={{display:"block"}}>
-    <a href="#" class="notification">
+    
    <Link to="/watch-later"><FontAwesomeIcon icon={faClock}  size='lg' color='white' /></Link>
    {
        itemInlater.length !==0 ?<span class="badge">{itemInlater.length}</span> : <div></div> 
    }
-   </a>
+   
     </span>
-    {/* <span style={{display:"block",fontWeight:"bolder",}}>Watch Later</span> */}
     </div>
     <div style={{display:"block"}}>
     <span style={{display:"block"}}><Link to="/playlist"><FontAwesomeIcon icon={faMusic}  size='lg' color='white'/></Link></span>

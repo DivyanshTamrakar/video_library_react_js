@@ -14,6 +14,7 @@ export default function Video(){
 
     useEffect(()=>{
         getAllVideos();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
 
@@ -33,7 +34,6 @@ export default function Video(){
         <div className="GridFrame">
            {
                videodata.map(function(item){
-                   console.log(item._id);
                    return(
                       <Link to={`/watch/${ item.videoid}`} >
                          <div key={item.id} className="Card">
@@ -41,7 +41,7 @@ export default function Video(){
                         <ReactPlayer url={item.url} light={true} width="258px" height="145px"/>
                         </span>
                         <div className="title">
-                        {<img className="roundedAvatar"  src={item.avatar} height="30px" width="30px"/> }
+                        {<img className="roundedAvatar" alt={'avatar'}  src={item.avatar} height="30px" width="30px"/> }
                         {item.title}
                         </div>
                         </div>

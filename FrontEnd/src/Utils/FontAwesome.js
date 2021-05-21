@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as Utils from '@fortawesome/free-solid-svg-icons'
 
 
 export function font(icon){

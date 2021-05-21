@@ -43,15 +43,15 @@ export default function WatchVideo(){
         console.error("Error in AuhtContext " , e);
       }
         }
-    function Removehandler(){
-      // setwatchlater(!watchlater);
-    }
+    // function Removehandler(){
+    //   // setwatchlater(!watchlater);
+    // }
 
     
     useEffect(()=>{
       getAllVideos();
-      
-  },[]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+        },[]);
 
 
   async function getAllVideos(){
@@ -59,26 +59,14 @@ export default function WatchVideo(){
           let response  = await getData(`/videos/${videoId}`);
           setresult(response.video);
           setrecommend(response.video.recommmend)
-
+          // Add this data to history context
+          setIteminhistory([...itemInhistoy,response.video]);
       }catch(e){
           console.error(e);
       }
   }
     
-    // // Add this data to history context
-    // useEffect(()=>{
-    //   setIteminhistory([...itemInhistoy,result]);
-    //   console.log(itemInhistoy.length);
-    // },[]);
-  
-
-
-
-      
-
-
-
-
+    
     return(
             <div className="WatchVideoPage">
            <div className="left-section">

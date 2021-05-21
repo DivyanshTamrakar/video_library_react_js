@@ -1,6 +1,6 @@
 import React from "react";
 import  {useAuth} from "../Context/LoginContext";
-import {useNavigate,useLocation, Link  } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import {appStyle,formStyle,submitStyle,alignment} from './LoginDesign'
 
 

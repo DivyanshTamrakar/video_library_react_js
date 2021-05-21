@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { postData } from "../Utils/fetchApi";
 import {  toast } from 'react-toastify';

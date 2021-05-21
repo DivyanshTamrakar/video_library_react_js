@@ -7,6 +7,7 @@ export default function WatchLater(){
 
     useEffect(()=>{
       getWatchLaterData();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 
@@ -30,9 +31,9 @@ export default function WatchLater(){
 
     }
     
-    function handler(item){
+    // function handler(item){
         
-    }
+    // }
 
 
 
@@ -46,7 +47,7 @@ export default function WatchLater(){
            ?
                       itemInlater.map(function(item){
                    return(
-                        <div key={item.videoid} className="Card">
+                        <div key={item._id} className="Card">
                         <span>
                         <ReactPlayer url={item.url} width="258px" height="145px"/>
                         </span>
