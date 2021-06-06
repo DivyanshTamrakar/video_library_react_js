@@ -6,10 +6,11 @@ import ReactPlayer from 'react-player';
 import { getData,postData} from "../Utils/fetchApi";
 import { useParams,Link } from 'react-router-dom';
 import { useHistory } from '../Context/HistoryContext';
+import { usePlaylist } from '../Context/PlaylistContext';
 import { arr } from "../Utils/dataArray";
 import { faThumbsUp,faThumbsDown, faClock,faPlusSquare,faCheck } from '@fortawesome/free-solid-svg-icons'
 import { font } from '../Utils/FontAwesome';
-
+import  Model  from '../Component/ModelPopup'
 
 export default function WatchVideo(){
     let { videoId } = useParams();
@@ -17,6 +18,7 @@ export default function WatchVideo(){
     const [result,setresult] = useState([]);
     const [recommend,setrecommend] = useState([]);
     const {itemInhistoy,setIteminhistory,} = useHistory();
+    let {modal,setmodal} = usePlaylist();
     const userId = localStorage.getItem('userId');
 
 
@@ -69,6 +71,8 @@ export default function WatchVideo(){
     
     return(
             <div className="WatchVideoPage">
+
+              
            <div className="left-section">
            <ReactPlayer playing={true} url={`https://youtu.be/${videoId}`} controls={true} height="413px" width="729px"/>
             <small style={{color:"rgb(54,139,188)"}}>{result.hashtag}</small>
@@ -89,14 +93,19 @@ export default function WatchVideo(){
                    <span>{font(faThumbsUp)}</span>
                    <span>{font(faThumbsDown)}</span>
                    { watchlater ?  <span>{font(faCheck)}</span> : <span onClick={AddHandler}>{font(faClock)}</span> }
-                   <span>{font(faPlusSquare)}</span>
+                   <span onClick={()=>setmodal(!modal)} >{font(faPlusSquare)}</span>
         
                    </div>
         
            </div>
-
-
            </div>
+           
+           
+           { modal ? <Model/> :<div></div>}
+
+
+
+
 
          <div className="right-section">
 

@@ -7,19 +7,22 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { WatchLaterProvider } from './Context/WatchlaterContext';
 import { HistoryContextProvider } from './Context/HistoryContext';
 import { AuthProvieder } from './Context/LoginContext';
+import { PlaylistProvider } from './Context/PlaylistContext';
 
 
 ReactDOM.render(
   <React.StrictMode>
-<AuthProvieder>
-<WatchLaterProvider>
-    <HistoryContextProvider>
     <Router>
+    <AuthProvieder>
+    <WatchLaterProvider>
+    <PlaylistProvider>
+    <HistoryContextProvider>
     <App />
-    </Router>
     </HistoryContextProvider>
+    </PlaylistProvider>
     </WatchLaterProvider>
-</AuthProvieder>
+    </AuthProvieder>
+    </Router>
  </React.StrictMode>,
   document.getElementById('root')
 );
