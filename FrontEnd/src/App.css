@@ -307,12 +307,15 @@
 }
 
 .Modal {
-  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-size: auto 100%; 
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.753);
-  top: 0rem;
-  left: 0rem;
-  right: 0rem;
-  bottom: 0rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .Modal-Content {
