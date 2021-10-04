@@ -3,11 +3,23 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
 import { Toast } from "../Utils/Toast";
-import { submitStyle } from "../Component/LoginForm/LoginDesign";
-import SignInForm from "../Component/LoginForm/SignInForm";
+import SignInForm from "../Component/Form/SignInForm";
+
+const submitStyle = {
+  margin: "10px 0 0 0",
+  padding: "7px 10px",
+  border: "1px solid #efffff",
+  borderRadius: "3px",
+  background: "#3085d6",
+  width: "100%",
+  fontSize: "15px",
+  color: "white",
+  display: "block",
+  cursor: "pointer",
+};
 
 export default function Login() {
-  const { login, setlogin, check } = useAuth();
+  const { login, Logouthandler, check } = useAuth();
   // const { state } = useLocation();
   // const navigate =  useNavigate();
 
@@ -15,12 +27,6 @@ export default function Login() {
     check();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  function Logouthandler() {
-    setlogin(false);
-    localStorage.clear();
-    toast.success("Successfull Logout!");
-  }
 
   return (
     <div className="LoginFrame">

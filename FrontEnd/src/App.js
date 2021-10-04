@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./Component/Header/Header";
+import ButtonAppBar from "./Component/Header/Appbar";
 import Video from "./Pages/VideoListing";
 import WatchLater from "./Pages/WatchLater";
 import Playlist from "./Pages/Playlist";
@@ -13,7 +14,8 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
+      <ButtonAppBar />
       <Routes>
         <Route path="/" element={<Video />} />
         <PrivateRoute path="/watch-later" element={<WatchLater />} />
