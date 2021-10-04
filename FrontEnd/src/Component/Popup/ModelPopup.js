@@ -1,6 +1,6 @@
-import { usePlaylist } from "../Context/PlaylistContext";
+import { usePlaylist } from "../../Context/PlaylistContext";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { font } from "../Utils/FontAwesome";
+import { font } from "../../Utils/FontAwesome";
 import { useState } from "react";
 
 const inputBox = {

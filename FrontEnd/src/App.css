@@ -1,7 +1,6 @@
 * {
   margin: 0rem;
   padding: 0rem;
-
 }
 
 /* width */
@@ -31,7 +30,6 @@
   margin: 0px;
   padding: 0px;
 }
-
 
 .App-logo {
   height: 40vmin;
@@ -79,7 +77,6 @@
   position: fixed;
   top: 0rem;
   background-color: rgb(0, 36, 199);
-
 }
 
 .headerInput {
@@ -89,7 +86,6 @@
 .headerInput input {
   width: 100%;
   padding: 0.28rem;
-
 }
 
 .IconText {
@@ -113,7 +109,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
 .cursor {
@@ -124,7 +119,6 @@
   text-decoration: none;
   color: black;
   margin: auto;
-
 }
 
 .GridFrame {
@@ -171,7 +165,6 @@
   border: 1px solid black;
   border-radius: 0.1rem;
   color: black;
-
 }
 
 .notification {
@@ -204,15 +197,12 @@
   grid-column-gap: 14px;
   grid-row-gap: 14px;
   width: 98%;
-
-
 }
 
 .WatchVideoPage {
-  margin: 4.7rem 2.8rem 1rem 6.0rem;
+  margin: 4.7rem 2.8rem 1rem 6rem;
   display: flex;
   justify-content: space-between;
-
 }
 
 .left-section {
@@ -224,7 +214,6 @@
   /* border: 1px solid black; */
   text-align: justify;
 }
-
 
 .chip {
   margin: 0.1rem;
@@ -243,7 +232,6 @@
   display: grid;
   grid-template-columns: auto auto;
   margin-top: 5rem;
-
 }
 
 .history-card {
@@ -309,7 +297,7 @@
 .Modal {
   height: 100%;
   width: 100%;
-  background-size: auto 100%; 
+  background-size: auto 100%;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.753);
   top: 0;
@@ -344,7 +332,6 @@ hr.dashed {
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
-
 }
 
 .watch-later-section {
@@ -355,7 +342,6 @@ hr.dashed {
   flex-direction: row;
   width: 7rem;
   justify-content: space-between;
-
 }
 
 .create-playlist {
