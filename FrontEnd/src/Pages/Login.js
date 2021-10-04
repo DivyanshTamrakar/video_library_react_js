@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
 import { Toast } from "../Utils/Toast";
 import { submitStyle } from "../Component/LoginForm/LoginDesign";
-import Form from "../Component/LoginForm/SignInForm";
+import SignInForm from "../Component/LoginForm/SignInForm";
 
 export default function Login() {
   const { login, setlogin, check } = useAuth();
@@ -29,7 +29,7 @@ export default function Login() {
           Logout
         </button>
       ) : (
-        <Form />
+        <SignInForm />
       )}
       <div>{Toast()}</div>
     </div>

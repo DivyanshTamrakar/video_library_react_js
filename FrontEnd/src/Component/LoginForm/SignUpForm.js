@@ -1,103 +1,183 @@
-import { appStyle, formStyle, submitStyle, alignment } from "./LoginDesign";
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { postData } from "../../Utils/fetchApi";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
 
-export default function SignUpForm() {
-  let email = "";
-  let pass = "";
-  let name = "";
-  let mobile = "";
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
-  function ClickHandler(event) {
+const theme = createTheme();
+
+function SignUpForm() {
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
     event.preventDefault();
-    RegisterUser();
-  }
-
-  async function RegisterUser() {
+    const data = new FormData(event.currentTarget);
+    // eslint-disable-next-line no-console
     const body = {
-      name: name,
-      email: email,
-      password: pass,
-      mobile: mobile,
+      name: data.get("firstName") + data.get("lastName"),
+      email: data.get("email"),
+      password: data.get("password"),
+      mobile: data.get("mobile"),
     };
+
+    RegisterUser(body);
+  };
+
+  async function RegisterUser(body) {
+    console.log(body);
     try {
       let response = await postData(body, "/users/signup");
       console.log(response);
-      if (response["success"] === true) {
-        return toast.success(response.message);
+      if (response.success) {
+        navigate("/login", { replace: true });
+        toast.success(response.message);
       } else {
-        return toast.error(response.message);
+        toast.error(response.message);
       }
     } catch (e) {
       console.error("Error in AuhtContext ", e);
+      toast.error(e);
     }
   }
 
   return (
-    <div style={appStyle}>
-      <form style={formStyle}>
-        <div style={alignment}>
-          <small>
-            <b>Name:</b>
-          </small>
-        </div>
-        <input
-          onChange={(text) => {
-            name = text.target.value;
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
-          label="Username:"
-          type="text"
-        />
-        <div style={alignment}>
-          <small>
-            <b>Email:</b>
-          </small>
-        </div>
-        <input
-          onChange={(text) => {
-            email = text.target.value;
-          }}
-          label="Username:"
-          type="text"
-        />
-        <div style={alignment}>
-          <small>
-            <b>Password:</b>
-          </small>
-        </div>
-        <input
-          onChange={(text) => {
-            pass = text.target.value;
-          }}
-          label="Password:"
-          type="password"
-        />
-        <div style={alignment}>
-          <small>
-            <b>Mobile:</b>
-          </small>
-        </div>
-        <input
-          onChange={(text) => {
-            mobile = text.target.value;
-          }}
-          label="Username:"
-          type="number"
-        />
-        <div>
-          <button onClick={ClickHandler} style={submitStyle}>
-            Register
-          </button>
-        </div>
-
-        <Link to="/login">
-          <div>
-            <button style={submitStyle}>Already Registered !</button>
-          </div>
-        </Link>
-      </form>
-    </div>
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="lname"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="mobile"
+                  label="Mobile Number"
+                  type="number"
+                  id="mobile"
+                  inputProps={{ maxLength: 10 }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={
+                    <Checkbox value="allowExtraEmails" color="primary" />
+                  }
+                  label="Remember Me."
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <Link href="/login" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 5 }} />
+      </Container>
+    </ThemeProvider>
   );
 }
+
+export default SignUpForm;
