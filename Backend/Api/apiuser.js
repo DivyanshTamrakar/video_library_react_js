@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var { User } = require("./model/UserModel.js");
+var { User } = require("../model/UserModel.js");
 var { extend } = require('lodash');
 var bodyparser = require('body-parser');
 router.use(bodyparser.json())

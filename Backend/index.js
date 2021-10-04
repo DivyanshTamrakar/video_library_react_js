@@ -3,9 +3,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 var cors = require("cors");
 var { initializeConnection } = require("./connection/connectionDB");
-var VideosApi = require("./allvideos.js");
-var userApi = require("./apiuser.js");
-var watchlaterApi = require("./watchlater.js");
+var VideosApi = require("./Api/allvideos.js");
+var userApi = require("./Api/apiuser.js");
+var watchlaterApi = require("./Api/watchlater");
 
 app.use(cors());
 

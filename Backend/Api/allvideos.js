@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var { Videos } = require("./model/AllVideos.js");
+var { Videos } = require("../model/AllVideos.js");
 var { extend } = require('lodash');
 var bodyparser = require('body-parser');
 
