@@ -126,7 +126,7 @@
   grid-template-columns: auto auto auto auto auto;
   grid-column-gap: 4px;
   grid-row-gap: 35px;
-  margin: 5rem 1rem 1rem 1em;
+  margin: 1rem;
 }
 
 .Card {

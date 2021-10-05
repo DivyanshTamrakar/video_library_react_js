@@ -1,5 +1,4 @@
 import { useAuth } from "../Context/LoginContext";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
 import { Toast } from "../Utils/Toast";
