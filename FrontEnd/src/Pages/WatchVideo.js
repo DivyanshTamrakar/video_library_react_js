@@ -66,7 +66,7 @@ export default function WatchVideo() {
   }
 
   return (
-    <div className="WatchVideoPage">
+    <div className="WatchVideoPage adjust">
       <div className="left-section">
         <ReactPlayer
           playing={true}

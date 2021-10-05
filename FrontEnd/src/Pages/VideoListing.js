@@ -1,57 +1,47 @@
 import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
 import { useAuth } from "../Context/LoginContext";
 import { Link } from "react-router-dom";
 import { getData } from "../Utils/fetchApi";
+import VideoCard from "../Component/Card/VideoCard";
 
 export default function Video() {
   const [videodata, setvideodata] = useState([]);
   const { check } = useAuth();
+  check();
 
   useEffect(() => {
     getAllVideos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  check();
-
-  async function getAllVideos() {
+  const getAllVideos = async () => {
     try {
       let response = await getData("/videos");
-      setvideodata(response.videos);
-    } catch (e) {
-      console.error(e);
+      if (response.success) {
+        setvideodata(response.videos);
+      }
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
 
   return (
-    <div className="GridFrame">
-      {videodata.map(function (item) {
+    <div className="GridFrame adjust">
+      {videodata.map(function ({ _id, videoid, title, avatar, url }) {
         return (
-          <Link to={`/watch/${item.videoid}`}>
-            <div key={item.id} className="Card">
-              <span>
-                <ReactPlayer
-                  url={item.url}
-                  light={true}
-                  width="258px"
-                  height="145px"
+          <div key={_id}>
+            <Link style={{ textDecoration: "none" }} to={`/watch/${videoid}`}>
+              <div className="Card">
+                <VideoCard
+                  url={url}
+                  avatar={avatar}
+                  title={title}
+                  videoid={videoid}
+                  id={_id}
                 />
-              </span>
-              <div className="title">
-                {
-                  <img
-                    className="roundedAvatar"
-                    alt={"avatar"}
-                    src={item.avatar}
-                    height="30px"
-                    width="30px"
-                  />
-                }
-                {item.title}
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         );
       })}
     </div>
