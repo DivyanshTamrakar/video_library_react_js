@@ -210,6 +210,18 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 600px) {
+  .WatchVideoPage {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .left-section {
+    text-align: left;
+    max-width: 550px;
+  }
+  
+}
+
 .left-section {
   text-align: left;
 }

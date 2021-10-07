@@ -15,7 +15,7 @@ export default function History(){
                    return(
                         <div key={item.id} className="history-card">
                         <span>
-                        <ReactPlayer url={`${item.url}`} width="258px" height="145px"/>
+                        <ReactPlayer url={item.url} width="258px" height="145px"/>
                         </span>
                         <div className="history-detail">
                         {item.title}

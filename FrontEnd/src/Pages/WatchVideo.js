@@ -16,10 +16,13 @@ export default function WatchVideo() {
   const { check } = useAuth();
 
   useEffect(() => {
+    check();
     getVideoData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  check();
+  
+
+
   async function getVideoData() {
     try {
       const response = await getData(`/videos/${videoId}`);
@@ -37,6 +40,8 @@ export default function WatchVideo() {
 
   return (
     <div className="WatchVideoPage adjust">
+
+      
       <div className="left-section">
         {result.watchlater?.length >= 0 ? (
           <PlayVideo videodata={result} />

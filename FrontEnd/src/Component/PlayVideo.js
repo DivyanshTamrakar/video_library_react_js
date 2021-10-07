@@ -110,12 +110,12 @@ function PlayVideo({ videodata }) {
   };
 
 
-  
+
   return (
     <div>
       <ReactPlayer
         playing={true}
-        url={`https://youtu.be/${videodata.videoid}`}
+        url={videodata.url}
         controls={true}
         height="413px"
         width="729px"
