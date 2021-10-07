@@ -8,8 +8,7 @@ router.use(bodyparser.json());
 
 router.route("/").post(async (req, res) => {
   const body = req.body;
-  WatchLater.exists(
-    { videostreamid: body.videostreamid, userId: body.userId },
+  WatchLater.exists({ videostreamid: body.videostreamid, userId: body.userId },
     async function (err, doc) {
       if (err) {
         console.log(err);
@@ -65,25 +64,4 @@ router.route("/:userId").get(async (req, res) => {
     });
   }
 });
-// .post(async (req,res)=>{
-//    try{
-//      const productUpdate = req.body;
-//      let { product } = req;
-//    product = extend(product,productUpdate);
-//    product = await product.save();
-//     res.json({
-//     success:true,
-//     message:"Data Updated successfully ",
-//     product:product
-//     })
-//    }catch(e){
-//      res.json({
-//     success:false,
-//     message:"data upation fail",
-//     error:`${e}`
-//     })
-//    }
-
-// })
-
 module.exports = router;

@@ -23,7 +23,7 @@ export function AuthProvieder({ children }) {
     try {
       let response = await postData(body, "/users/signin");
       console.log(response);
-      if (response["success"] === true) {
+      if (response.success) {
         setlogin(true);
         localStorage.setItem("userId", response["user"]["uid"]);
         localStorage.setItem("name", response["user"]["name"]);

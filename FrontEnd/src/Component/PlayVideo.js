@@ -11,26 +11,42 @@ import ReactPlayer from "react-player";
 import { postData } from "../Utils/fetchApi";
 
 function PlayVideo({ videodata }) {
-  const [watchlater, setwatchlater] = useState(false);
+  const [watchlater, setwatchlater] = useState(videodata.watchlater);
   const userId = localStorage.getItem("userId");
   const { modal, setmodal } = usePlaylist();
 
-  async function AddHandler() {
-    const body = {
-      videostreamid: videodata.videoid,
-      userId: userId,
-      title: videodata.title,
-      url: videodata.url,
-      releaseDate: videodata.releaseDate,
-    };
+  
+  async function addtoWatchlater() {
+    // const body = {
+    //   videostreamid: videodata.videoid,
+    //   userId: userId,
+    //   title: videodata.title,
+    //   url: videodata.url,
+    //   releaseDate: videodata.releaseDate,
+    // };
+    // try {
+    //   let response = await postData(body, "/watchlater");
+    //   if (response["success"] === true) {
+    //     setwatchlater(!watchlater);
+    //     // toast.success(response.message);
+    //     console.log(response.message);
+    //   } else {
+    //     // toast.error(response.message);
+    //     console.log(response.message);
+    //   }
+    // } catch (e) {
+    //   console.error("Error in AuhtContext ", e);
+    // }
+
     try {
-      let response = await postData(body, "/watchlater");
-      if (response["success"] === true) {
-        setwatchlater(!watchlater);
-        // toast.success(response.message);
+      let response = await postData(
+        { videoidDB: videodata._id, userid: userId },
+        "/videos/add/watchlater"
+      );
+      if (response.success) {
+        setwatchlater(response.result.watchlater);
         console.log(response.message);
       } else {
-        // toast.error(response.message);
         console.log(response.message);
       }
     } catch (e) {
@@ -38,6 +54,32 @@ function PlayVideo({ videodata }) {
     }
   }
 
+ 
+  
+  async function removefromWatchlater() {
+    try {
+      let response = await postData(
+        { videoidDB: videodata._id, userid: userId },
+        "/videos/remove/watchlater"
+      );
+      if (response.success) {
+        setwatchlater(response.result.watchlater);
+        console.log(response.message);
+      } else {
+        console.log(response.message);
+      }
+    } catch (e) {
+      console.error("Error in AuhtContext ", e);
+    }
+  }
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   return (
     <div>
       <ReactPlayer
@@ -64,17 +106,28 @@ function PlayVideo({ videodata }) {
         </div>
 
         <div className="actions">
-          <ThumbUpOutlinedIcon />
-          <ThumbDownOutlinedIcon />
-          {watchlater ? (
-            <span>
-              <CheckCircleIcon />
+          <ThumbUpOutlinedIcon sx={{ cursor: "pointer" }} />
+          <ThumbDownOutlinedIcon sx={{ cursor: "pointer" }} />
+
+
+
+          {watchlater.includes(userId) ? (
+            <span onClick={removefromWatchlater}>
+              <CheckCircleIcon  sx={{ cursor: "pointer" }} />
             </span>
           ) : (
-            <span onClick={AddHandler}>
-              <WatchLaterOutlinedIcon />
+            <span onClick={addtoWatchlater}>
+              <WatchLaterOutlinedIcon sx={{ cursor: "pointer" }} />
             </span>
           )}
+
+
+
+
+
+
+
+
           <span onClick={() => setmodal(!modal)}>
             <AddCircleOutlineOutlinedIcon />
           </span>

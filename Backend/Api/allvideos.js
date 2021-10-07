@@ -3,6 +3,7 @@ var router = express.Router();
 var { Videos } = require("../model/AllVideos.js");
 var { extend } = require("lodash");
 var bodyparser = require("body-parser");
+var mongoose = require("mongoose");
 
 router.use(bodyparser.json());
 
@@ -92,5 +93,51 @@ router
       });
     }
   });
+
+router.route("/add/watchlater").post(async (req, res) => {
+  let { videoidDB, userid } = req.body;
+  const id = mongoose.Types.ObjectId(userid);
+
+  Videos.findByIdAndUpdate(
+    { _id: videoidDB },
+    { $push: { watchlater: id } },
+    { new: true },
+    function (err, docs) {
+      if (err) {
+        res.json({ success: false, error: err });
+      } else {
+        res.json({
+          success: true,
+          message: "Data Updated Successfully",
+          result: docs,
+        });
+      }
+    }
+  );
+});
+
+
+router.route("/remove/watchlater").post(async (req, res) => {
+  let { videoidDB, userid } = req.body;
+  const id = mongoose.Types.ObjectId(userid);
+
+  Videos.findByIdAndUpdate(
+    { _id: videoidDB },
+    { $pull: { watchlater: id } },
+    { new: true },
+    function (err, docs) {
+      if (err) {
+        res.json({ success: false, error: err });
+      } else {
+        res.json({
+          success: true,
+          message: "Data Updated Successfully",
+          result: docs,
+        });
+      }
+    }
+  );
+});
+
 
 module.exports = router;

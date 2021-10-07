@@ -5,12 +5,11 @@ import { useParams, Link } from "react-router-dom";
 import { useHistory } from "../Context/HistoryContext";
 import { arr } from "../Utils/dataArray";
 import Recommend from "../Component/Recommend";
-
 import PlayVideo from "../Component/PlayVideo";
 
 export default function WatchVideo() {
   let { videoId } = useParams();
-  const [result, setresult] = useState([]);
+  const [result, setresult] = useState({});
   const [recommend, setrecommend] = useState([]);
   const { itemInhistoy, setIteminhistory } = useHistory();
 
@@ -37,12 +36,21 @@ export default function WatchVideo() {
   return (
     <div className="WatchVideoPage adjust">
       <div className="left-section">
-        <PlayVideo videodata={result} />
+        {result.watchlater?.length >= 0 ? (
+          <PlayVideo videodata={result} />
+        ) : (
+          <div>No Data Found</div>
+        )}
       </div>
 
       <div className="right-section">
         {recommend.map(function (item) {
-          return <div class="chip"> {item} </div>;
+          return (
+            <div key={item} className="chip">
+              {" "}
+              {item}{" "}
+            </div>
+          );
         })}
 
         <div className="history-left-watch">
