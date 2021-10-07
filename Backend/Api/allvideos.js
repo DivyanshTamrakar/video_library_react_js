@@ -116,7 +116,6 @@ router.route("/add/watchlater").post(async (req, res) => {
   );
 });
 
-
 router.route("/remove/watchlater").post(async (req, res) => {
   let { videoidDB, userid } = req.body;
   const id = mongoose.Types.ObjectId(userid);
@@ -139,5 +138,49 @@ router.route("/remove/watchlater").post(async (req, res) => {
   );
 });
 
+router.route("/like/video").post(async (req, res) => {
+  let { videoidDB, userid } = req.body;
+  const id = mongoose.Types.ObjectId(userid);
+
+  Videos.findByIdAndUpdate(
+    { _id: videoidDB },
+    { $push: { likes: id } ,$pull: { dislikes: id }},
+    { new: true },
+    function (err, docs) {
+      if (err) {
+        res.json({ success: false, error: err });
+      } else {
+        res.json({
+          success: true,
+          message: "Data Updated Successfully",
+          result: docs,
+        });
+      }
+    }
+  );
+});
+
+router.route("/dislike/video").post(async (req, res) => {
+  let { videoidDB, userid } = req.body;
+  const id = mongoose.Types.ObjectId(userid);
+
+  Videos.findByIdAndUpdate(
+    { _id: videoidDB },
+    { $pull: { likes: id } ,$push:{ dislikes: id }},
+    
+    { new: true },
+    function (err, docs) {
+      if (err) {
+        res.json({ success: false, error: err });
+      } else {
+        res.json({
+          success: true,
+          message: "Data Updated Successfully",
+          result: docs,
+        });
+      }
+    }
+  );
+});
 
 module.exports = router;

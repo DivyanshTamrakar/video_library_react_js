@@ -6,13 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { WatchLaterProvider } from "./Context/WatchlaterContext";
 import { HistoryContextProvider } from "./Context/HistoryContext";
-import { AuthProvieder } from "./Context/LoginContext";
+import { AuthProvider } from "./Context/AuthContext";
 import { PlaylistProvider } from "./Context/PlaylistContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvieder>
+      <AuthProvider>
         <WatchLaterProvider>
           <PlaylistProvider>
             <HistoryContextProvider>
@@ -20,7 +20,7 @@ ReactDOM.render(
             </HistoryContextProvider>
           </PlaylistProvider>
         </WatchLaterProvider>
-      </AuthProvieder>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

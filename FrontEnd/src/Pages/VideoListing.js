@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../Context/LoginContext";
+import { useAuth } from "../Context/AuthContext";
 import { Link } from "react-router-dom";
 import { getData } from "../Utils/fetchApi";
 import VideoCard from "../Component/Card/VideoCard";

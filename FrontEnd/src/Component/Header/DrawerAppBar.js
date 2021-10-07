@@ -15,7 +15,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { useAuth } from "../../Context/LoginContext";
+import { useAuth } from "../../Context/AuthContext";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";

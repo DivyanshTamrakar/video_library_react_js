@@ -38,7 +38,7 @@ export default function Header() {
               <FontAwesomeIcon icon={faClock} size="lg" color="white" />
             </Link>
             {itemInlater.length !== 0 ? (
-              <span class="badge">{itemInlater.length}</span>
+              <span className="badge">{itemInlater.length}</span>
             ) : (
               <div></div>
             )}

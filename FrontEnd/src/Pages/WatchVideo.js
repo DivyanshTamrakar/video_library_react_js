@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { getData } from "../Utils/fetchApi";
 import { useParams, Link } from "react-router-dom";
 import { useHistory } from "../Context/HistoryContext";
+import { useAuth } from "../Context/AuthContext";
 import { arr } from "../Utils/dataArray";
 import Recommend from "../Component/Recommend";
 import PlayVideo from "../Component/PlayVideo";
@@ -12,12 +13,13 @@ export default function WatchVideo() {
   const [result, setresult] = useState({});
   const [recommend, setrecommend] = useState([]);
   const { itemInhistoy, setIteminhistory } = useHistory();
+  const { check } = useAuth();
 
   useEffect(() => {
     getVideoData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  check();
   async function getVideoData() {
     try {
       const response = await getData(`/videos/${videoId}`);

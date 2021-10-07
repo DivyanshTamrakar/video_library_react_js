@@ -28,7 +28,7 @@ export default function Model() {
           {font(faTimesCircle)}
         </span>
         <span>Save As....</span>
-        <hr class="dashed"></hr>
+        <hr className="dashed"></hr>
         <div className="watch-later-section">
           <input style={{ marginTop: "0.4rem" }} type="checkbox" name="name" />
           <span>Watch Later</span>

@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const AuthContext = createContext();
 
-export function AuthProvieder({ children }) {
+export function AuthProvider({ children }) {
   const [login, setlogin] = useState(false);
   const userId = localStorage.getItem("userId");
 
@@ -22,7 +22,6 @@ export function AuthProvieder({ children }) {
     };
     try {
       let response = await postData(body, "/users/signin");
-      console.log(response);
       if (response.success) {
         setlogin(true);
         localStorage.setItem("userId", response["user"]["uid"]);

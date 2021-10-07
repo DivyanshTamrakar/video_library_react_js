@@ -4,6 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Model from "../Component/Popup/ModelPopup";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -12,11 +14,12 @@ import { postData } from "../Utils/fetchApi";
 
 function PlayVideo({ videodata }) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
+  const [likes, setlikes] = useState(videodata.likes);
+  const [dislikes, setdislikes] = useState(videodata.dislikes);
   const userId = localStorage.getItem("userId");
   const { modal, setmodal } = usePlaylist();
 
-  
-  async function addtoWatchlater() {
+  const addtoWatchlater = async () => {
     // const body = {
     //   videostreamid: videodata.videoid,
     //   userId: userId,
@@ -52,11 +55,9 @@ function PlayVideo({ videodata }) {
     } catch (e) {
       console.error("Error in AuhtContext ", e);
     }
-  }
+  };
 
- 
-  
-  async function removefromWatchlater() {
+  const removefromWatchlater = async () => {
     try {
       let response = await postData(
         { videoidDB: videodata._id, userid: userId },
@@ -71,15 +72,45 @@ function PlayVideo({ videodata }) {
     } catch (e) {
       console.error("Error in AuhtContext ", e);
     }
-  }
+  };
 
- 
- 
- 
- 
- 
- 
- 
+  const addtoLike = async () => {
+    try {
+      let response = await postData(
+        { videoidDB: videodata._id, userid: userId },
+        "/videos/like/video"
+      );
+      if (response.success) {
+        setlikes(response.result.likes);
+        setdislikes(response.result.dislikes);
+        console.log(response.result.likes);
+      } else {
+        console.log(response.message);
+      }
+    } catch (e) {
+      console.error("Error in AuhtContext ", e);
+    }
+  };
+
+  const addtoDislike = async () => {
+    try {
+      let response = await postData(
+        { videoidDB: videodata._id, userid: userId },
+        "/videos/dislike/video"
+      );
+      if (response.success) {
+        setlikes(response.result.likes);
+        setdislikes(response.result.dislikes);
+      } else {
+        console.log(response.message);
+      }
+    } catch (e) {
+      console.error("Error in AuhtContext ", e);
+    }
+  };
+
+
+  
   return (
     <div>
       <ReactPlayer
@@ -98,7 +129,10 @@ function PlayVideo({ videodata }) {
             <small>
               <b>{videodata.views} views</b>
             </small>
-            <small> • </small>
+            <small>
+              {" "}
+              <b>•</b>{" "}
+            </small>
             <small>
               <b>{videodata.releaseDate}</b>
             </small>
@@ -106,30 +140,39 @@ function PlayVideo({ videodata }) {
         </div>
 
         <div className="actions">
-          <ThumbUpOutlinedIcon sx={{ cursor: "pointer" }} />
-          <ThumbDownOutlinedIcon sx={{ cursor: "pointer" }} />
-
-
-
-          {watchlater.includes(userId) ? (
-            <span onClick={removefromWatchlater}>
-              <CheckCircleIcon  sx={{ cursor: "pointer" }} />
-            </span>
+          <span style={{ fontWeight: "bolder" }}>{likes.length}</span>
+          {likes.includes(userId) ? (
+            <ThumbUpIcon sx={{ cursor: "pointer" }} />
           ) : (
-            <span onClick={addtoWatchlater}>
-              <WatchLaterOutlinedIcon sx={{ cursor: "pointer" }} />
-            </span>
+            <ThumbUpOutlinedIcon
+              onClick={addtoLike}
+              sx={{ cursor: "pointer" }}
+            />
           )}
 
+          {dislikes.includes(userId) ? (
+            <ThumbDownIcon sx={{ cursor: "pointer" }} />
+          ) : (
+            <ThumbDownOutlinedIcon
+              onClick={addtoDislike}
+              sx={{ cursor: "pointer" }}
+            />
+          )}
 
-
-
-
-
-
+          {watchlater.includes(userId) ? (
+            <CheckCircleIcon
+              onClick={removefromWatchlater}
+              sx={{ cursor: "pointer" }}
+            />
+          ) : (
+            <WatchLaterOutlinedIcon
+              onClick={addtoWatchlater}
+              sx={{ cursor: "pointer" }}
+            />
+          )}
 
           <span onClick={() => setmodal(!modal)}>
-            <AddCircleOutlineOutlinedIcon />
+            <AddCircleOutlineOutlinedIcon sx={{ cursor: "pointer" }} />
           </span>
         </div>
       </div>
