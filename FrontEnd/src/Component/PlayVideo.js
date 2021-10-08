@@ -109,17 +109,16 @@ function PlayVideo({ videodata }) {
     }
   };
 
-
-
   return (
     <div>
       <ReactPlayer
         playing={true}
         url={videodata.url}
         controls={true}
-        height="413px"
-        width="729px"
+        // height="413px"
+        // width="45rem"
       />
+
       <small style={{ color: "rgb(54,139,188)" }}>{videodata.hashtag}</small>
       <h2>{videodata.title}</h2>
 
@@ -177,7 +176,7 @@ function PlayVideo({ videodata }) {
         </div>
       </div>
 
-      {modal ? <Model /> : <div></div>}
+      {modal && <Model />}
     </div>
   );
 }

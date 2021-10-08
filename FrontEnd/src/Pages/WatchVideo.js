@@ -20,8 +20,6 @@ export default function WatchVideo() {
     getVideoData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
-
 
   async function getVideoData() {
     try {
@@ -40,14 +38,8 @@ export default function WatchVideo() {
 
   return (
     <div className="WatchVideoPage adjust">
-
-      
       <div className="left-section">
-        {result.watchlater?.length >= 0 ? (
-          <PlayVideo videodata={result} />
-        ) : (
-          <div>No Data Found</div>
-        )}
+        {result.watchlater?.length >= 0 && <PlayVideo videodata={result} />}
       </div>
 
       <div className="right-section">

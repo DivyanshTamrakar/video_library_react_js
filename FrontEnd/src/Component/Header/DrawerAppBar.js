@@ -16,7 +16,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useAuth } from "../../Context/AuthContext";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import HomeIcon from "@mui/icons-material/Home";
 import { ListItemButton } from "@mui/material";
@@ -24,6 +24,7 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import HistoryIcon from "@mui/icons-material/History";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -80,7 +81,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  
+
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -91,7 +92,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 export default function DrawerAppBar() {
   const { login, Logouthandler } = useAuth();
@@ -107,7 +108,7 @@ export default function DrawerAppBar() {
   };
 
   return (
-    <Box sx={{ display: "flex"}}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -124,7 +125,7 @@ export default function DrawerAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link color="#ffffff" href="/" underline="none">
+            <Link to="/" className="link">
               <b>Video App</b>
             </Link>
           </Typography>
@@ -134,7 +135,7 @@ export default function DrawerAppBar() {
               <b>Logout</b>
             </Button>
           ) : (
-            <Link color="#ffffff" href="/login" underline="none">
+            <Link to="/login" className="link">
               <Button color="inherit">
                 <b>Login</b>
               </Button>
@@ -145,9 +146,7 @@ export default function DrawerAppBar() {
             size="large"
             edge="end"
             aria-label="account of current user"
-            // aria-controls={menuId}
             aria-haspopup="true"
-            // onClick={handleProfileMenuOpen}
             color="inherit"
           >
             <AccountCircle />
@@ -156,6 +155,7 @@ export default function DrawerAppBar() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          <span style={{fontWeight:"bolder"}}>Video App</span>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -165,50 +165,61 @@ export default function DrawerAppBar() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/" className="link black">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <WatchLaterIcon />
-            </ListItemIcon>
-            <ListItemText primary="Watch Later" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/watch-later" className="link black">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <WatchLaterIcon />
+              </ListItemIcon>
+              <ListItemText primary="Watch Later" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <PlaylistPlayIcon />
-            </ListItemIcon>
-            <ListItemText primary="PlayList" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/playlist" className="link black">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <PlaylistPlayIcon />
+              </ListItemIcon>
+              <ListItemText primary="PlayList" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <HistoryIcon />
-            </ListItemIcon>
-            <ListItemText primary="History" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/history" className="link black">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HistoryIcon />
+              </ListItemIcon>
+              <ListItemText primary="History" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <AccountCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="User" />
-          </ListItemButton>
-        </ListItem>
+        <Link to="/login" className="link black">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary="User" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+
         <Divider />
       </Drawer>
     </Box>
