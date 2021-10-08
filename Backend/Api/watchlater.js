@@ -8,7 +8,8 @@ router.use(bodyparser.json());
 
 router.route("/").post(async (req, res) => {
   const body = req.body;
-  WatchLater.exists({ videostreamid: body.videostreamid, userId: body.userId },
+  WatchLater.exists(
+    { videostreamid: body.videostreamid, userId: body.userId },
     async function (err, doc) {
       if (err) {
         console.log(err);
@@ -41,18 +42,22 @@ router.route("/").post(async (req, res) => {
   );
 });
 
+router.route("/remove").post(async (req, res) => {
+  const { videostreamid ,userId} = req.body;
+  WatchLater.deleteOne({ videostreamid: videostreamid ,userId:userId })
+    .then(function () {
+      console.log("Data deleted"); // Success
+    })
+    .catch(function (error) {
+      console.log(error); // Failure
+    });
+});
+
 router.route("/:userId").get(async (req, res) => {
   const userId = req.params;
   try {
     const video = await WatchLater.find(userId);
-    if (video.length === 0) {
-      return res.json({
-        success: false,
-        message: "Cant find your Video",
-        video: [],
-      });
-    }
-    return res.status(200).json({
+    res.status(200).json({
       success: true,
       message: "Video Found!",
       video: video,

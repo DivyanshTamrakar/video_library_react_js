@@ -5,8 +5,8 @@ import { useParams, Link } from "react-router-dom";
 import { useHistory } from "../Context/HistoryContext";
 import { useAuth } from "../Context/AuthContext";
 import { arr } from "../Utils/dataArray";
-import Recommend from "../Component/Recommend";
-import PlayVideo from "../Component/PlayVideo";
+import Recommend from "../Component/WatchVideoComponent/Recommend";
+import PlayVideo from "../Component/WatchVideoComponent/PlayVideo";
 
 export default function WatchVideo() {
   let { videoId } = useParams();

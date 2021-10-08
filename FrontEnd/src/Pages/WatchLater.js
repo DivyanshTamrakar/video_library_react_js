@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getData } from "../Utils/fetchApi";
-import ReactPlayer from "react-player";
+
+import WatchLaterCard from "../Component/WatchLaterComponents/WatchLaterCard";
 
 function WatchLater() {
-  const [itemInlater, setIteminlater] = useState([]);
+  const [iteminWatchlater, setiteminWatchlater] = useState([]);
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
@@ -12,44 +13,38 @@ function WatchLater() {
   }, []);
 
   async function getWatchLaterData() {
-    const response = await getData(`/watchlater/${userId}`);
-    if (response.success === true) {
-      const result = response.video;
-      setIteminlater([...result]);
-    } else {
-      console.log("No Videos Found");
+    try {
+      const response = await getData(`/watchlater/${userId}`);
+      if (response.success) {
+        setiteminWatchlater(response.video);
+      } else {
+        console.log("No Videos Found");
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 
-  // function handler(item){
-
-  // }
-
   return (
     <div>
-      <div className="WatcLaterFrame">
-        {itemInlater.length !== 0 ? (
-          itemInlater.map(function (item) {
+      {iteminWatchlater.length !== 0 ? (
+        <div className="WatcLaterFrame adjust">
+          {iteminWatchlater.map(function ({_id,url,videostreamid,title,releaseDate,userId}) {
             return (
-              <div key={item._id} className="Card">
-                <span>
-                  <ReactPlayer url={item.url} width="258px" height="145px" />
-                </span>
-                {/* <div className="title">
-                        {<img className="roundedAvatar"  src={item.avatar} height="30px" width="30px"/> }
-                        {item.name}
-                        </div>
-                        <div onClick={()=>handler(item)}
-                        className="watchlater cursor">
-                          Remove From Watch Later 
-                        </div> */}
-              </div>
+              <WatchLaterCard
+                _id={_id}
+                url={url}
+                videostreamid={videostreamid}
+                title={title}
+                releaseDate={releaseDate}
+                userId={userId}
+              />
             );
-          })
-        ) : (
-          <div style={{ marginTop: "5rem" }}>No Video In Watch Later </div>
-        )}
-      </div>
+          })}
+        </div>
+      ) : (
+        <div className="adjust">No Video Found</div>
+      )}
     </div>
   );
 }

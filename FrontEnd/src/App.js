@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import { PrivateRoute } from "./Component/PrivateRoutes/privateroutes";
 import { Routes, Route } from "react-router-dom";
 import DrawerAppBar from "./Component/Header/DrawerAppBar";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/watch/:videoId" element={<WatchVideo />} />
         <Route path="/login" element={<Login />} />
+        <PrivateRoute path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>

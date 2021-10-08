@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { usePlaylist } from "../Context/PlaylistContext";
+import { usePlaylist } from "../../Context/PlaylistContext";
 import "react-toastify/dist/ReactToastify.css";
-import Model from "../Component/Popup/ModelPopup";
+import Model from "../Popup/ModelPopup";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -10,7 +10,7 @@ import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ReactPlayer from "react-player";
-import { postData } from "../Utils/fetchApi";
+import { postData } from "../../Utils/fetchApi";
 
 function PlayVideo({ videodata }) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
@@ -20,26 +20,23 @@ function PlayVideo({ videodata }) {
   const { modal, setmodal } = usePlaylist();
 
   const addtoWatchlater = async () => {
-    // const body = {
-    //   videostreamid: videodata.videoid,
-    //   userId: userId,
-    //   title: videodata.title,
-    //   url: videodata.url,
-    //   releaseDate: videodata.releaseDate,
-    // };
-    // try {
-    //   let response = await postData(body, "/watchlater");
-    //   if (response["success"] === true) {
-    //     setwatchlater(!watchlater);
-    //     // toast.success(response.message);
-    //     console.log(response.message);
-    //   } else {
-    //     // toast.error(response.message);
-    //     console.log(response.message);
-    //   }
-    // } catch (e) {
-    //   console.error("Error in AuhtContext ", e);
-    // }
+    const body = {
+      videostreamid: videodata.videoid,
+      userId: userId,
+      title: videodata.title,
+      url: videodata.url,
+      releaseDate: videodata.releaseDate,
+    };
+    try {
+      let response = await postData(body, "/watchlater");
+      if (response.success) {
+        console.log(response.message);
+      } else {
+        console.log(response.message);
+      }
+    } catch (e) {
+      console.error("Error in AuhtContext ", e);
+    }
 
     try {
       let response = await postData(
@@ -58,6 +55,28 @@ function PlayVideo({ videodata }) {
   };
 
   const removefromWatchlater = async () => {
+
+    try {
+      let response = await postData({
+        videostreamid: videodata.videoid,
+        userId: userId,
+      }, "/watchlater/remove");
+      if (response.success) {
+        console.log(response.message);
+      } else {
+        console.log(response.message);
+      }
+    } catch (e) {
+      console.error("Error in AuhtContext ", e);
+    }
+
+
+
+
+
+
+
+
     try {
       let response = await postData(
         { videoidDB: videodata._id, userid: userId },

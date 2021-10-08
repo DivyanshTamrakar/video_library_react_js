@@ -209,7 +209,7 @@ export default function DrawerAppBar() {
           </ListItem>
         </Link>
 
-        <Link to="/login" className="link black">
+        <Link to="/profile" className="link black">
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
