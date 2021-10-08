@@ -55,35 +55,30 @@ function PlayVideo({ videodata }) {
   };
 
   const removefromWatchlater = async () => {
-
     try {
-      let response = await postData({
-        videostreamid: videodata.videoid,
-        userId: userId,
-      }, "/watchlater/remove");
+      let response = await postData(
+        { videoidDB: videodata._id, userid: userId },
+        "/videos/remove/watchlater"
+      );
+
       if (response.success) {
         console.log(response.message);
+        setwatchlater(response.result.watchlater);
       } else {
         console.log(response.message);
       }
     } catch (e) {
       console.error("Error in AuhtContext ", e);
     }
-
-
-
-
-
-
-
-
     try {
       let response = await postData(
-        { videoidDB: videodata._id, userid: userId },
-        "/videos/remove/watchlater"
+        {
+          videostreamid: videodata.videoid,
+          userId: userId,
+        },
+        "/watchlater/remove"
       );
       if (response.success) {
-        setwatchlater(response.result.watchlater);
         console.log(response.message);
       } else {
         console.log(response.message);

@@ -42,17 +42,6 @@ router.route("/").post(async (req, res) => {
   );
 });
 
-router.route("/remove").post(async (req, res) => {
-  const { videostreamid ,userId} = req.body;
-  WatchLater.deleteOne({ videostreamid: videostreamid ,userId:userId })
-    .then(function () {
-      console.log("Data deleted"); // Success
-    })
-    .catch(function (error) {
-      console.log(error); // Failure
-    });
-});
-
 router.route("/:userId").get(async (req, res) => {
   const userId = req.params;
   try {
@@ -69,4 +58,23 @@ router.route("/:userId").get(async (req, res) => {
     });
   }
 });
+
+router.route("/remove").post(async (req, res) => {
+  const { videostreamid, userId } = req.body;
+  WatchLater.findOneAndDelete({ videostreamid: videostreamid, userId: userId })
+    .then(function () {
+      res.status(200).json({
+        success: true,
+        message: "Data Successfully Deleted!",
+      });
+    })
+    .catch(function (error) {
+      res.status(400).json({
+        success: false,
+        message: "Something Went Wrong !",
+        error: error,
+      });
+    });
+});
+
 module.exports = router;

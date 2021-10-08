@@ -198,7 +198,6 @@
 .WatcLaterFrame {
   display: flex;
   flex-direction: column;
-  justify-content: start;
 }
 
 .WatchVideoPage {
