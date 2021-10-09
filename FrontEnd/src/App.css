@@ -134,18 +134,7 @@
   grid-column-gap: 15px;
   grid-row-gap: 15px;
 }
-@media screen and (max-width: 600px) {
-  .GridFrame {
-    display: grid;
-    grid-template-columns: auto;
-    grid-column-gap: 0px;
-    grid-row-gap: 35px;
-    margin: 1rem;
-  }
-  .adjust {
-    margin: 4rem 1rem 1rem 4rem;
-  }
-}
+
 .roundedAvatar {
   border-radius: 500rem;
 }
@@ -205,17 +194,6 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: 600px) {
-  .WatchVideoPage {
-    display: grid;
-    grid-template-columns: auto;
-  }
-  .left-section {
-    text-align: left;
-    width: 550px;
-  }
-}
-
 .left-section {
   text-align: left;
 }
@@ -239,19 +217,16 @@
 }
 
 .HistoryFrame {
-  margin-left: 10.75rem;
-  display: grid;
-  grid-template-columns: auto auto;
-  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .history-card {
-  max-width: 35rem;
-  margin-top: 0.5rem;
-  /* border: 1px solid grey; */
+  border: 1px solid grey;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: start;
   text-align: left;
   font-weight: bolder;
   color: black;
@@ -374,4 +349,35 @@ hr.dashed {
 }
 .black {
   color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .GridFrame {
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 35px;
+    margin: 1rem;
+  }
+  .adjust {
+    margin: 4rem 1rem 1rem 4rem;
+  }
+
+  .history-card {
+    border: 1px solid grey;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-weight: bolder;
+    color: black;
+  }
+  .WatchVideoPage {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .left-section {
+    text-align: left;
+    width: 550px;
+  }
 }

@@ -29,7 +29,14 @@ function WatchLater() {
     <div>
       {iteminWatchlater.length !== 0 ? (
         <div className="WatcLaterFrame adjust">
-          {iteminWatchlater.map(function ({_id,url,videostreamid,title,releaseDate,userId}) {
+          {iteminWatchlater.map(function ({
+            _id,
+            url,
+            videostreamid,
+            title,
+            releaseDate,
+            userId,
+          }) {
             return (
               <WatchLaterCard
                 _id={_id}

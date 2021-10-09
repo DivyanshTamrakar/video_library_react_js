@@ -1,21 +1,22 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import DeleteIcon from '@mui/icons-material/Delete';
 
-
-function WatchLaterCard({_id,videostreamid,url,title,userId,releaseDate,}) {
+function WatchLaterCard({
+  _id,
+  videostreamid,
+  url,
+  title,
+  userId,
+  releaseDate,
+}) {
   return (
-    <div key={_id} className="Card">
+    <div key={_id} >
       <span>
-        <ReactPlayer url={url} width="258px" height="145px" />
+        <ReactPlayer url={url} width="max-width" height="150px" />
       </span>
-      {/* <div className="title">
-                {<img className="roundedAvatar"  src={item.avatar} height="30px" width="30px"/> }
-                {item.name}
-                </div>
-                <div onClick={()=>handler(item)}
-                className="watchlater cursor">
-                  Remove From Watch Later 
-                </div> */}
+      <div>{title}</div>
+      <DeleteIcon className={"cursor"} />
     </div>
   );
 }
