@@ -375,4 +375,7 @@ hr.dashed {
   .css-11o2879-MuiDrawer-docked .MuiDrawer-paper {
     display: none;
   }
+  .css-nws099 .MuiDrawer-paper{
+    display: none;
+}
 }
