@@ -130,7 +130,7 @@
 
 .GridFrame {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
 }
@@ -359,7 +359,7 @@ hr.dashed {
     margin: 1rem;
   }
   .adjust {
-    margin: 4rem 1rem 1rem 4rem;
+    margin: 4rem 1rem 1rem 1rem;
   }
 
   .history-card {
@@ -378,5 +378,8 @@ hr.dashed {
   .left-section {
     text-align: left;
     width: 550px;
+  }
+  .css-11o2879-MuiDrawer-docked .MuiDrawer-paper {
+    display: none;
   }
 }
