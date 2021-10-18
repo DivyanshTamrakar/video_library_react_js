@@ -350,6 +350,17 @@ hr.dashed {
 .black {
   color: black;
 }
+.centerdiv {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+}
 
 @media screen and (max-width: 600px) {
   .adjust {
@@ -375,7 +386,7 @@ hr.dashed {
   .css-11o2879-MuiDrawer-docked .MuiDrawer-paper {
     display: none;
   }
-  .css-nws099 .MuiDrawer-paper{
+  .css-nws099 .MuiDrawer-paper {
     display: none;
-}
+  }
 }

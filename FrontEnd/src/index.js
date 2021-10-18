@@ -8,19 +8,22 @@ import { WatchLaterProvider } from "./Context/WatchlaterContext";
 import { HistoryContextProvider } from "./Context/HistoryContext";
 import { AuthProvider } from "./Context/AuthContext";
 import { PlaylistProvider } from "./Context/PlaylistContext";
+import { LoaderContextProvider } from "./Context/LoaderContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <WatchLaterProvider>
-          <PlaylistProvider>
-            <HistoryContextProvider>
-              <App />
-            </HistoryContextProvider>
-          </PlaylistProvider>
-        </WatchLaterProvider>
-      </AuthProvider>
+      <LoaderContextProvider>
+        <AuthProvider>
+          <WatchLaterProvider>
+            <PlaylistProvider>
+              <HistoryContextProvider>
+                <App />
+              </HistoryContextProvider>
+            </PlaylistProvider>
+          </WatchLaterProvider>
+        </AuthProvider>
+      </LoaderContextProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
