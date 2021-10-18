@@ -1,6 +1,6 @@
 export default function Playlist() {
   return (
-    <div>
+    <div className="adjust">
       <div>Create Playlist</div>
     </div>
   );

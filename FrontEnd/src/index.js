@@ -9,20 +9,23 @@ import { HistoryContextProvider } from "./Context/HistoryContext";
 import { AuthProvider } from "./Context/AuthContext";
 import { PlaylistProvider } from "./Context/PlaylistContext";
 import { LoaderContextProvider } from "./Context/LoaderContext";
+import { VideoListingContextProvider } from "./Context/VideoListingContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <LoaderContextProvider>
-        <AuthProvider>
-          <WatchLaterProvider>
-            <PlaylistProvider>
-              <HistoryContextProvider>
-                <App />
-              </HistoryContextProvider>
-            </PlaylistProvider>
-          </WatchLaterProvider>
-        </AuthProvider>
+        <VideoListingContextProvider>
+          <AuthProvider>
+            <WatchLaterProvider>
+              <PlaylistProvider>
+                <HistoryContextProvider>
+                  <App />
+                </HistoryContextProvider>
+              </PlaylistProvider>
+            </WatchLaterProvider>
+          </AuthProvider>
+        </VideoListingContextProvider>
       </LoaderContextProvider>
     </Router>
   </React.StrictMode>,
