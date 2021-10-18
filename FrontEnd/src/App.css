@@ -387,6 +387,9 @@ hr.dashed {
     font-weight: bolder;
     color: black;
   }
+  .left-section{
+    margin: 0;
+  }
   .css-11o2879-MuiDrawer-docked .MuiDrawer-paper {
     display: none;
   }
