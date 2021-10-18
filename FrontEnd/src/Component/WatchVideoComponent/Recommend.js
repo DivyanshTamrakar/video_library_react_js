@@ -3,11 +3,17 @@ import ReactPlayer from "react-player";
 
 function Recommend({ id, url, title }) {
   return (
-    <div  className="history-card-watch">
-      <span>
-        <ReactPlayer url={`${url}`} width="150px" height="100px" />
-      </span>
-      <div style={{marginLeft:"1rem"}} className="history-detail-watch">{title}</div>
+    <div className="Recommended-videos">
+      <div>
+        <ReactPlayer
+          url={url}
+          playing={false}
+          width="100%"
+          height="100%"
+          controls={false}
+        />
+      </div>
+      <div className="Recommended-videos-title text-align-left">{title}</div>
     </div>
   );
 }

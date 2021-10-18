@@ -10,11 +10,13 @@ import { PrivateRoute } from "./Component/PrivateRoutes/privateroutes";
 import { Routes, Route } from "react-router-dom";
 import DrawerAppBar from "./Component/Header/DrawerAppBar";
 import Profile from "./Pages/Profile";
+import { useLoader } from "./Context/LoaderContext";
 
 function App() {
+  const { loader } = useLoader();
   return (
     <div className="App">
-      <DrawerAppBar />
+      {!loader && <DrawerAppBar />}
       <Routes>
         <Route path="/" element={<Video />} />
         <PrivateRoute path="/watch-later" element={<WatchLater />} />

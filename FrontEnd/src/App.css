@@ -73,6 +73,12 @@
 .adjust {
   margin: 4.5rem 1rem 1rem 6rem;
 }
+.text-align-left {
+  text-align: left;
+}
+.pad-small {
+  padding: 3px;
+}
 
 .header {
   width: 98%;
@@ -191,19 +197,28 @@
 }
 
 .WatchVideoPage {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 2fr));
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-columns: minmax(50px, auto);
+  grid-gap: 20px;
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .left-section {
-  text-align: left;
+  margin-top: 2.5rem;
 }
 
-.right-section {
-  width: fit-content;
-  /* border: 1px solid black; */
-  text-align: justify;
-}
 
 .chip {
   margin: 0.1rem;
@@ -241,19 +256,13 @@
 .history-card-watch {
   max-width: 24.5rem;
   margin-top: 0.5rem;
-  /* border: 1px solid grey; */
+  border: 1px solid grey;
   display: flex;
   flex-direction: row;
   justify-content: left;
   text-align: left;
   font-weight: bolder;
   color: black;
-}
-
-.history-detail-watch {
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem;
 }
 
 .history-detail-watch {
@@ -366,6 +375,9 @@ hr.dashed {
   .adjust {
     margin: 4rem 1rem 1rem 1rem;
   }
+  .WatchVideoPage {
+    margin: 4rem 1rem 1rem 0rem;
+  }
   .history-card {
     border: 1px solid grey;
     margin-top: 1rem;
@@ -375,18 +387,25 @@ hr.dashed {
     font-weight: bolder;
     color: black;
   }
-  .WatchVideoPage {
-    display: grid;
-    grid-template-columns: auto;
-  }
-  .left-section {
-    text-align: left;
-    width: 550px;
-  }
   .css-11o2879-MuiDrawer-docked .MuiDrawer-paper {
     display: none;
   }
   .css-nws099 .MuiDrawer-paper {
     display: none;
   }
+}
+
+.Recommended-videos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  grid-auto-columns: minmax(50px, auto);
+  grid-gap: 10px;
+  margin: 0.5rem;
+}
+.Recommended-videos-title {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+
 }

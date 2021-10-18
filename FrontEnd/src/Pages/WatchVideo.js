@@ -9,7 +9,7 @@ import Recommend from "../Component/WatchVideoComponent/Recommend";
 import PlayVideo from "../Component/WatchVideoComponent/PlayVideo";
 
 export default function WatchVideo() {
-  let { videoId } = useParams();
+  const { videoId } = useParams();
   const [result, setresult] = useState({});
   const [recommend, setrecommend] = useState([]);
   const { itemInhistoy, setIteminhistory } = useHistory();
@@ -39,6 +39,8 @@ export default function WatchVideo() {
   return (
     <div className="WatchVideoPage adjust">
       <div className="left-section">
+
+        
         {result.watchlater?.length >= 0 && <PlayVideo videodata={result} />}
       </div>
 
@@ -52,8 +54,8 @@ export default function WatchVideo() {
           );
         })}
 
-        <div className="history-left-watch">
-          <div style={{ textAlign: "left" }}></div>
+        <div>
+          
           {arr.map(function (item) {
             return (
               <div key={item.id}>
@@ -67,6 +69,8 @@ export default function WatchVideo() {
             );
           })}
         </div>
+      
+      
       </div>
     </div>
   );

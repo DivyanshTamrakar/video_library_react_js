@@ -125,22 +125,30 @@ function PlayVideo({ videodata }) {
 
   return (
     <div>
-      <ReactPlayer
-        playing={true}
-        url={videodata.url}
-        controls={true}
-        // height="413px"
-        // width="45rem"
-      />
+      <div className="player-wrapper">
+        <ReactPlayer
+          url={videodata.url}
+          className="react-player"
+          playing
+          width="100%"
+          height="100%"
+          controls={false}
+        />
+      </div>
 
-      <small style={{ color: "rgb(54,139,188)" }}>{videodata.hashtag}</small>
-      <h2>{videodata.title}</h2>
+      <h6
+        className="text-align-left pad-small"
+        style={{ color: "rgb(54,139,188)" }}
+      >
+        {videodata.hashtag}
+      </h6>
+      <h2 className="text-align-left pad-small">{videodata.title}</h2>
 
-      <div className="info-bar">
+      <div className="info-bar pad-small">
         <div>
           <span style={{ display: "inline" }}>
             <small>
-              <b>{videodata.views} views</b>
+              <b> 0 {videodata.views} views</b>
             </small>
             <small>
               {" "}
