@@ -129,10 +129,10 @@ function PlayVideo({ videodata }) {
         <ReactPlayer
           url={videodata.url}
           className="react-player"
-          playing
+          playing={false}
           width="100%"
           height="100%"
-          controls={false}
+          controls={true}
         />
       </div>
 

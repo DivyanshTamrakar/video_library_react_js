@@ -198,7 +198,7 @@
 
 .WatchVideoPage {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 2fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-auto-rows: minmax(100px, auto);
   grid-auto-columns: minmax(50px, auto);
   grid-gap: 20px;
@@ -218,7 +218,6 @@
 .left-section {
   margin-top: 2.5rem;
 }
-
 
 .chip {
   margin: 0.1rem;
@@ -376,7 +375,10 @@ hr.dashed {
     margin: 4rem 1rem 1rem 1rem;
   }
   .WatchVideoPage {
-    margin: 4rem 1rem 1rem 0rem;
+    margin: 3.6rem 0rem 1rem 0rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    
   }
   .history-card {
     border: 1px solid grey;
@@ -387,7 +389,7 @@ hr.dashed {
     font-weight: bolder;
     color: black;
   }
-  .left-section{
+  .left-section {
     margin: 0;
   }
   .css-11o2879-MuiDrawer-docked .MuiDrawer-paper {
@@ -410,5 +412,4 @@ hr.dashed {
   text-decoration: none;
   color: black;
   font-weight: 500;
-
 }
