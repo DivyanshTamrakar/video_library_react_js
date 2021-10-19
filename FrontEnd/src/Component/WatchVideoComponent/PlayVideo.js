@@ -11,6 +11,8 @@ import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOu
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ReactPlayer from "react-player";
 import { postData } from "../../Utils/fetchApi";
+import { useAuth } from "../../Context/AuthContext";
+import { useNavigate } from "react-router";
 
 function PlayVideo({ videodata }) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
@@ -18,39 +20,45 @@ function PlayVideo({ videodata }) {
   const [dislikes, setdislikes] = useState(videodata.dislikes);
   const userId = localStorage.getItem("userId");
   const { modal, setmodal } = usePlaylist();
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const addtoWatchlater = async () => {
-    const body = {
-      videostreamid: videodata.videoid,
-      userId: userId,
-      title: videodata.title,
-      url: videodata.url,
-      releaseDate: videodata.releaseDate,
-    };
-    try {
-      let response = await postData(body, "/watchlater");
-      if (response.success) {
-        console.log(response.message);
-      } else {
-        console.log(response.message);
+    if (login) {
+      const body = {
+        videostreamid: videodata.videoid,
+        userId: userId,
+        title: videodata.title,
+        url: videodata.url,
+        releaseDate: videodata.releaseDate,
+      };
+      try {
+        let response = await postData(body, "/watchlater");
+        if (response.success) {
+          console.log(response.message);
+        } else {
+          console.log(response.message);
+        }
+      } catch (e) {
+        console.error("Error in AuhtContext ", e);
       }
-    } catch (e) {
-      console.error("Error in AuhtContext ", e);
-    }
 
-    try {
-      let response = await postData(
-        { videoidDB: videodata._id, userid: userId },
-        "/videos/add/watchlater"
-      );
-      if (response.success) {
-        setwatchlater(response.result.watchlater);
-        console.log(response.message);
-      } else {
-        console.log(response.message);
+      try {
+        let response = await postData(
+          { videoidDB: videodata._id, userid: userId },
+          "/videos/add/watchlater"
+        );
+        if (response.success) {
+          setwatchlater(response.result.watchlater);
+          console.log(response.message);
+        } else {
+          console.log(response.message);
+        }
+      } catch (e) {
+        console.error("Error in AuhtContext ", e);
       }
-    } catch (e) {
-      console.error("Error in AuhtContext ", e);
+    } else {
+      navigate("/login", { replace: true });
     }
   };
 
@@ -89,37 +97,43 @@ function PlayVideo({ videodata }) {
   };
 
   const addtoLike = async () => {
-    try {
-      let response = await postData(
-        { videoidDB: videodata._id, userid: userId },
-        "/videos/like/video"
-      );
-      if (response.success) {
-        setlikes(response.result.likes);
-        setdislikes(response.result.dislikes);
-        console.log(response.result.likes);
-      } else {
-        console.log(response.message);
+    if (login) {
+      try {
+        let response = await postData(
+          { videoidDB: videodata._id, userid: userId },
+          "/videos/like/video"
+        );
+        if (response.success) {
+          setlikes(response.result.likes);
+          setdislikes(response.result.dislikes);
+        } else {
+          console.log(response.message);
+        }
+      } catch (e) {
+        console.error("Error in AuhtContext ", e);
       }
-    } catch (e) {
-      console.error("Error in AuhtContext ", e);
+    } else {
+      navigate("/login", { replace: true });
     }
   };
 
   const addtoDislike = async () => {
-    try {
-      let response = await postData(
-        { videoidDB: videodata._id, userid: userId },
-        "/videos/dislike/video"
-      );
-      if (response.success) {
-        setlikes(response.result.likes);
-        setdislikes(response.result.dislikes);
-      } else {
-        console.log(response.message);
+    if (login) {
+      try {
+        let response = await postData(
+          { videoidDB: videodata._id, userid: userId },
+          "/videos/dislike/video"
+        );
+        if (response.success) {
+          setlikes(response.result.likes);
+          setdislikes(response.result.dislikes);
+        } else {
+        }
+      } catch (e) {
+        console.error("Error in AuhtContext ", e);
       }
-    } catch (e) {
-      console.error("Error in AuhtContext ", e);
+    } else {
+      navigate("/login", { replace: true });
     }
   };
 
