@@ -29,25 +29,27 @@ function WatchLater() {
     <div>
       {iteminWatchlater.length !== 0 ? (
         <div className="WatcLaterFrame adjust">
-          {iteminWatchlater.map(function ({
-            _id,
-            url,
-            videostreamid,
-            title,
-            releaseDate,
-            userId,
-          }) {
-            return (
-              <WatchLaterCard
-                _id={_id}
-                url={url}
-                videostreamid={videostreamid}
-                title={title}
-                releaseDate={releaseDate}
-                userId={userId}
-              />
-            );
-          })}
+          {iteminWatchlater.map(
+            (
+              { _id, url, videostreamid, title, releaseDate, userId },
+              index
+            ) => {
+              return (
+                <div key={index}>
+                  {
+                    <WatchLaterCard
+                      _id={_id}
+                      url={url}
+                      videostreamid={videostreamid}
+                      title={title}
+                      releaseDate={releaseDate}
+                      userId={userId}
+                    />
+                  }
+                </div>
+              );
+            }
+          )}
         </div>
       ) : (
         <div className="adjust">No Video Found</div>

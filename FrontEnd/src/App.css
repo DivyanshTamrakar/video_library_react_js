@@ -192,8 +192,7 @@
 }
 
 .WatcLaterFrame {
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 .WatchVideoPage {
@@ -378,7 +377,6 @@ hr.dashed {
     margin: 3.6rem 0rem 1rem 0rem;
     display: grid;
     grid-template-columns: 1fr;
-    
   }
   .history-card {
     border: 1px solid grey;
