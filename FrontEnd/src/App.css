@@ -180,7 +180,9 @@
 /* .notification:hover {
   background: red;
 } */
-
+body {
+  background-color: rgb(173, 173, 173);
+}
 .notification .badge {
   position: absolute;
   top: -10px;

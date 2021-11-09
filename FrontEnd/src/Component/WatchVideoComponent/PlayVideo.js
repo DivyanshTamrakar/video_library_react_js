@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { usePlaylist } from "../../Context/PlaylistContext";
 import "react-toastify/dist/ReactToastify.css";
-import Model from "../Popup/ModelPopup";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -13,15 +11,22 @@ import ReactPlayer from "react-player";
 import { postData } from "../../Utils/fetchApi";
 import { useAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router";
+import SimpleDialog from "../Popup/DialogeBox";
 
 function PlayVideo({ videodata }) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
   const [likes, setlikes] = useState(videodata.likes);
   const [dislikes, setdislikes] = useState(videodata.dislikes);
   const userId = localStorage.getItem("userId");
-  const { modal, setmodal } = usePlaylist();
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("sdjbf");
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
 
   const addtoWatchlater = async () => {
     if (login) {
@@ -206,13 +211,16 @@ function PlayVideo({ videodata }) {
             />
           )}
 
-          <span onClick={() => setmodal(!modal)}>
+          <span onClick={() => setOpen(true)}>
             <AddCircleOutlineOutlinedIcon sx={{ cursor: "pointer" }} />
           </span>
         </div>
       </div>
-
-      {modal && <Model />}
+      <SimpleDialog
+        selectedValue={selectedValue}
+        open={open}
+        onClose={handleClose}
+      />
     </div>
   );
 }
