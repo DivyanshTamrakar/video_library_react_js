@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 
-export default function SimpleDialog(props) {
-  const { onClose, selectedValue, open } = props;
-
+export default function SimpleDialog({ onClose, selectedValue, open }) {
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -22,4 +20,3 @@ SimpleDialog.propTypes = {
   open: PropTypes.bool.isRequired,
   selectedValue: PropTypes.string.isRequired,
 };
-
