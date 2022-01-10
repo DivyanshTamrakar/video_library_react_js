@@ -38,26 +38,18 @@ function PlayVideo({ videodata }) {
         releaseDate: videodata.releaseDate,
       };
       try {
-        let response = await postData(body, "/watchlater");
-        if (response.success) {
-          console.log(response.message);
-        } else {
-          console.log(response.message);
-        }
+        await postData(body, "/watchlater");
       } catch (e) {
         console.error("Error in AuhtContext ", e);
       }
 
       try {
-        let response = await postData(
+        const response = await postData(
           { videoidDB: videodata._id, userid: userId },
           "/videos/add/watchlater"
         );
         if (response.success) {
           setwatchlater(response.result.watchlater);
-          console.log(response.message);
-        } else {
-          console.log(response.message);
         }
       } catch (e) {
         console.error("Error in AuhtContext ", e);
@@ -69,33 +61,25 @@ function PlayVideo({ videodata }) {
 
   const removefromWatchlater = async () => {
     try {
-      let response = await postData(
+      const response = await postData(
         { videoidDB: videodata._id, userid: userId },
         "/videos/remove/watchlater"
       );
 
       if (response.success) {
-        console.log(response.message);
         setwatchlater(response.result.watchlater);
-      } else {
-        console.log(response.message);
       }
     } catch (e) {
       console.error("Error in AuhtContext ", e);
     }
     try {
-      let response = await postData(
+      await postData(
         {
           videostreamid: videodata.videoid,
           userId: userId,
         },
         "/watchlater/remove"
       );
-      if (response.success) {
-        console.log(response.message);
-      } else {
-        console.log(response.message);
-      }
     } catch (e) {
       console.error("Error in AuhtContext ", e);
     }
@@ -111,8 +95,6 @@ function PlayVideo({ videodata }) {
         if (response.success) {
           setlikes(response.result.likes);
           setdislikes(response.result.dislikes);
-        } else {
-          console.log(response.message);
         }
       } catch (e) {
         console.error("Error in AuhtContext ", e);
@@ -125,14 +107,13 @@ function PlayVideo({ videodata }) {
   const addtoDislike = async () => {
     if (login) {
       try {
-        let response = await postData(
+        const response = await postData(
           { videoidDB: videodata._id, userid: userId },
           "/videos/dislike/video"
         );
         if (response.success) {
           setlikes(response.result.likes);
           setdislikes(response.result.dislikes);
-        } else {
         }
       } catch (e) {
         console.error("Error in AuhtContext ", e);

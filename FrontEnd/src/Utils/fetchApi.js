@@ -4,10 +4,9 @@ import axios from "axios";
 export const url = "https://fathomless-temple-28282.herokuapp.com";
 // export const url = "http://localhost:5000";
 export async function getData(...endpoints) {
-  let final_url = `${url}${endpoints}`;
-  console.log(final_url);
+  const final_url = `${url}${endpoints}`;
   try {
-    let response = await axios.get(final_url);
+    const response = await axios.get(final_url);
     const resultData = response.data;
     return resultData;
   } catch (e) {
@@ -16,10 +15,9 @@ export async function getData(...endpoints) {
 }
 
 export async function postData(body, ...endpoints) {
-  let final_url = `${url}${endpoints}`;
-  console.log(final_url);
+  const final_url = `${url}${endpoints}`;
   try {
-    let response = await axios.post(final_url, body);
+    const response = await axios.post(final_url, body);
     const resultData = response.data;
     return resultData;
   } catch (e) {
