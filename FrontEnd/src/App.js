@@ -19,18 +19,45 @@ function App() {
   return (
     <div className="App">
       {!loader && <DrawerAppBar />}
-      
+
       <Routes>
         <Route path="/" element={<Video />} />
-        <PrivateRoute path="/watch-later" element={<WatchLater />} />
-        <PrivateRoute path="/history" element={<History />} />
+        <Route
+          path="/watch-later"
+          element={
+            <PrivateRoute>
+              <WatchLater />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/history"
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/watch/:videoId" element={<WatchVideo />} />
         <Route path="/login" element={<Login />} />
-        <PrivateRoute path="/profile" element={<Profile />} />
+
+
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+
+        {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
         <Route path="/signup" element={<Signup />} />
       </Routes>
-      
+
     </div>
   );
 }
