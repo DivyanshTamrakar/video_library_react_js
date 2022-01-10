@@ -1,13 +1,15 @@
 # Full Stack Video Library Web Application 
 
 It is a video library app with the features included :
+* **Responsive Design.**
 * **Authentication.**
 * **User Profile Management**
+* **User can Watch the video.**
 * **Add to Watch later.**
 * **User can like or dislike the video**
 * **User can see their watch history**
 * **Show recommend videos.**
-* **Profile Management.**
+
 
 
 
