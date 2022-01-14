@@ -197,11 +197,7 @@ function PlayVideo({ videodata }) {
           </span>
         </div>
       </div>
-      <SimpleDialog
-        selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-      />
+      <SimpleDialog />
     </div>
   );
 }

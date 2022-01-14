@@ -1,22 +1,27 @@
+import { Button } from "@mui/material";
 import React from "react";
-import PropTypes from "prop-types";
-import DialogTitle from "@mui/material/DialogTitle";
-import Dialog from "@mui/material/Dialog";
 
-export default function SimpleDialog({ onClose, selectedValue, open }) {
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
-
+export default function SimpleDialog() {
+  const playlistname = ["New Songs", "Old Songs", "Lyrical"];
   return (
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>Save As</DialogTitle>
-    </Dialog>
+    <div className="centerdiv">
+      <h3>Add To Playlist</h3>
+      <hr className="mtb-10" />
+      <div>
+        <span>
+          {playlistname.map((item) => {
+            return (
+              <div className="show-playlist">
+                <div className="items">{item}</div>
+                <input type="checkbox" />
+              </div>
+            );
+          })}
+        </span>
+      </div>
+      <Button sx={{ width: "100%", margin: "10px 0px" }} variant="contained">
+        Create New Playlist
+      </Button>
+    </div>
   );
 }
-
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-};

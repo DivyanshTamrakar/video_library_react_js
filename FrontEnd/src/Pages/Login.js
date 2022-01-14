@@ -19,9 +19,6 @@ const submitStyle = {
 
 export default function Login() {
   const { login, Logouthandler, check } = useAuth();
-  // const { state } = useLocation();
-  // const navigate =  useNavigate();
-
   useEffect(() => {
     check();
     // eslint-disable-next-line react-hooks/exhaustive-deps
