@@ -1,15 +1,15 @@
 import { Button } from "@mui/material";
 import React from "react";
-import CancelIcon from "@mui/icons-material/Cancel";
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
-export default function SimpleDialog() {
+export default function SimpleDialog({setOpen}) {
   const playlistname = ["New Songs", "Old Songs", "Lyrical"];
   return (
     <div className="centerdiv">
       <div className="dialogueHead">
-       <div className="headtitle" > Add To Playlist</div>
+       <div className="headtitle"> Add To Playlist</div>
         <div className="cancelIcon">
-        <CancelIcon color="warning" />
+        <CancelOutlinedIcon onClick={()=>setOpen(false)}/>
         </div>
       </div>
       <hr className="mtb-10" />

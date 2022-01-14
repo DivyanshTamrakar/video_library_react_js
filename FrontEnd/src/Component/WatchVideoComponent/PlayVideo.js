@@ -190,7 +190,7 @@ function PlayVideo({ videodata }) {
           </span>
         </div>
       </div>
-      {open && <SimpleDialog />}
+      {open && <SimpleDialog setOpen={setOpen} />}
     </div>
   );
 }
