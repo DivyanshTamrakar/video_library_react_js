@@ -1,11 +1,17 @@
 import { Button } from "@mui/material";
 import React from "react";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 export default function SimpleDialog() {
   const playlistname = ["New Songs", "Old Songs", "Lyrical"];
   return (
     <div className="centerdiv">
-      <h3>Add To Playlist</h3>
+      <div className="dialogueHead">
+       <div className="headtitle" > Add To Playlist</div>
+        <div className="cancelIcon">
+        <CancelIcon color="warning" />
+        </div>
+      </div>
       <hr className="mtb-10" />
       <div>
         <span>

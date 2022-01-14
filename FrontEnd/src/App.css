@@ -413,6 +413,8 @@ hr.dashed {
   color: black;
   font-weight: 500;
 }
+
+/* playlist model poipup */
 .centerdiv {
   width: 30%;
   height: 30%;
@@ -443,7 +445,20 @@ hr.dashed {
 .show-playlist > input{
   flex: 1;
 }
+.dialogueHead{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.headtitle{
+  font-weight: 800;
+  flex:9;
+}
+.cancelIcon{
+  flex: 1;
+  cursor: pointer;
 
+}
 
 @media only screen and (max-width: 768px){
   .centerdiv {
