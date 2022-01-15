@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const playlistSchema = new mongoose.Schema(
   {
-    userId: {
+    customerid: {
       type: String,
       required: "user id is mandaory",
       unique: false,
@@ -17,5 +17,5 @@ const playlistSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Playlist = mongoose.model("playlist", playlistSchema);
+const Playlist = mongoose.model("Playlist", playlistSchema);
 module.exports = { Playlist };

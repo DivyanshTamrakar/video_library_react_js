@@ -56,7 +56,7 @@ function SignUpForm() {
   async function RegisterUser(body) {
     console.log(body);
     try {
-      let response = await postData(body, "/users/signup");
+      const response = await postData(body, "/users/signup");
       console.log(response);
       if (response.success) {
         navigate("/login", { replace: true });

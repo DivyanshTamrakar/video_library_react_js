@@ -1,25 +1,51 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { postData, getData } from "../../Utils/fetchApi";
 
 export default function SimpleDialog({ setOpen }) {
-  const [playlistname, setplaylistname] = useState([
-    "Old Songs",
-    "New Songs",
-    "Lyrical",
-  ]);
+  const userid = localStorage.getItem("userId");
+  const [playlistname, setplaylistname] = useState([]);
   const [click, setclick] = useState(false);
   const [name, setname] = useState("");
 
-  const AddPlaylist = () => {
+  useEffect(() => {
+    getUserPlaylists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [click]);
+
+  const getUserPlaylists = async () => {
+    try {
+      const response = await getData(`/playlist/${userid}`);
+      if (response.success) {
+        setplaylistname(response.playlists);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const AddPlaylist = async () => {
     if (name === "") {
       toast.error("playlist name cant be empty");
     } else {
-      setplaylistname([...playlistname, name]);
-      setname("");
-      setclick(false);
+      try {
+        const response = await postData(
+          { customerid: localStorage.getItem("userId"), playlistname: name },
+          "/playlist/addtoplaylist"
+        );
+        if (response.success) {
+          setname("");
+          setclick(false);
+          toast.success(response.message);
+        } else {
+          toast.warn(response.message);
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
   };
 
@@ -37,7 +63,7 @@ export default function SimpleDialog({ setOpen }) {
           {playlistname.map((item, index) => {
             return (
               <div key={index} className="show-playlist">
-                <div className="items">{item}</div>
+                <div className="items">{item.playlistname}</div>
                 <input type="checkbox" />
               </div>
             );
