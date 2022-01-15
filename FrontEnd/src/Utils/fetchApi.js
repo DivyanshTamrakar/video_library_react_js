@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // userId which comes from local storage
-export const url = "https://fathomless-temple-28282.herokuapp.com";
+export const url = "https://calm-falls-84962.herokuapp.com";
 // export const url = "http://localhost:5000";
 export async function getData(...endpoints) {
   const final_url = `${url}${endpoints}`;

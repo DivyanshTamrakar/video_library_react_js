@@ -1,7 +1,7 @@
 import { useAuth } from "../Context/AuthContext";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
-import { Toast } from "../Utils/Toast";
+import  Toast  from "../Utils/Toast";
 import SignInForm from "../Component/Form/SignInForm";
 
 const submitStyle = {
@@ -19,9 +19,6 @@ const submitStyle = {
 
 export default function Login() {
   const { login, Logouthandler, check } = useAuth();
-  // const { state } = useLocation();
-  // const navigate =  useNavigate();
-
   useEffect(() => {
     check();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,7 +33,7 @@ export default function Login() {
       ) : (
         <SignInForm />
       )}
-      <div>{Toast()}</div>
+      <Toast/>
     </div>
   );
 }

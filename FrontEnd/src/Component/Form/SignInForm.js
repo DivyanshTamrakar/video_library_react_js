@@ -23,8 +23,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://tamrakardivyansh189.netlify.app/">
+        Divyansh Tamrakar
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -34,7 +34,6 @@ function Copyright(props) {
 const theme = createTheme();
 
 function SignInForm() {
-
   const { LoginWithCredential } = useAuth();
 
   const handleSubmit = (event) => {
@@ -101,6 +100,8 @@ function SignInForm() {
               Sign In
             </Button>
             <Grid container>
+            <Grid item xs>
+              </Grid>
               <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?

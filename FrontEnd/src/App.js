@@ -53,8 +53,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
-        {/* <PrivateRoute path="/profile" element={<Profile />} /> */}
         <Route path="/signup" element={<Signup />} />
       </Routes>
 

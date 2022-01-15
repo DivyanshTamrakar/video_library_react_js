@@ -12,6 +12,7 @@ import { postData } from "../../Utils/fetchApi";
 import { useAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router";
 import SimpleDialog from "../Popup/DialogeBox";
+import Toast from "../../Utils/Toast";
 
 function PlayVideo({ videodata }) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
@@ -21,12 +22,6 @@ function PlayVideo({ videodata }) {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("sdjbf");
-
-  const handleClose = (value) => {
-    setOpen(false);
-    setSelectedValue(value);
-  };
 
   const addtoWatchlater = async () => {
     if (login) {
@@ -143,7 +138,6 @@ function PlayVideo({ videodata }) {
         {videodata.hashtag}
       </h6>
       <h2 className="text-align-left pad-small">{videodata.title}</h2>
-
       <div className="info-bar pad-small">
         <div>
           <span style={{ display: "inline" }}>
@@ -192,16 +186,13 @@ function PlayVideo({ videodata }) {
             />
           )}
 
-          <span onClick={() => setOpen(true)}>
+          <span onClick={() => setOpen(!open)}>
             <AddCircleOutlineOutlinedIcon sx={{ cursor: "pointer" }} />
           </span>
         </div>
       </div>
-      <SimpleDialog
-        selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-      />
+      {open && <SimpleDialog setOpen={setOpen} />}
+      <Toast/>
     </div>
   );
 }

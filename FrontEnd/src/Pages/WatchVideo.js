@@ -21,10 +21,9 @@ export default function WatchVideo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function getVideoData() {
+  const getVideoData = async () => {
     try {
       const response = await getData(`/videos/${videoId}`);
-
       if (response.success) {
         setrecommend(response.video.recommmend);
         setresult(response.video);
@@ -34,13 +33,11 @@ export default function WatchVideo() {
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   return (
     <div className="WatchVideoPage adjust">
       <div className="left-section">
-
-        
         {result.watchlater?.length >= 0 && <PlayVideo videodata={result} />}
       </div>
 
@@ -55,7 +52,6 @@ export default function WatchVideo() {
         })}
 
         <div>
-          
           {arr.map(function (item) {
             return (
               <div key={item.id}>
@@ -69,8 +65,6 @@ export default function WatchVideo() {
             );
           })}
         </div>
-      
-      
       </div>
     </div>
   );
