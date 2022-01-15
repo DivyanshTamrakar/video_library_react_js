@@ -417,7 +417,7 @@ hr.dashed {
 /* playlist model poipup */
 .centerdiv {
   width: 30%;
-  height: 30%;
+  height:max-content;
   background-color: white;
   position: absolute;
   top:0;
@@ -426,6 +426,7 @@ hr.dashed {
   right: 0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 10px;
+  border-radius: 10px;
 }
 .mtb-10{
   margin-top: 10px;
@@ -459,6 +460,15 @@ hr.dashed {
   cursor: pointer;
 
 }
+.playlist-name-input{
+  border: 3px solid black;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 5px;
+
+  
+}
+
 
 @media only screen and (max-width: 768px){
   .centerdiv {
