@@ -59,16 +59,20 @@ export default function SimpleDialog({ setOpen }) {
       </div>
       <hr className="mtb-10" />
       <div>
-        <span>
-          {playlistname.map((item, index) => {
-            return (
-              <div key={index} className="show-playlist">
-                <div className="items">{item.playlistname}</div>
-                <input type="checkbox" />
-              </div>
-            );
-          })}
-        </span>
+        {playlistname.length ? (
+          <span>
+            {playlistname.map((item, index) => {
+              return (
+                <div key={index} className="show-playlist">
+                  <div className="items">{item.playlistname}</div>
+                  <input type="checkbox" />
+                </div>
+              );
+            })}
+          </span>
+        ) : (
+          "You dont have any playlist"
+        )}
       </div>
       {!click && (
         <Button
