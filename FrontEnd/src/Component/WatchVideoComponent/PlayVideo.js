@@ -12,6 +12,7 @@ import { postData } from "../../Utils/fetchApi";
 import { useAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router";
 import SimpleDialog from "../Popup/DialogeBox";
+import Toast from "../../Utils/Toast";
 
 function PlayVideo({ videodata }) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
@@ -191,6 +192,7 @@ function PlayVideo({ videodata }) {
         </div>
       </div>
       {open && <SimpleDialog setOpen={setOpen} />}
+      <Toast/>
     </div>
   );
 }

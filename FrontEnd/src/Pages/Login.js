@@ -1,7 +1,7 @@
 import { useAuth } from "../Context/AuthContext";
 import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect } from "react";
-import { Toast } from "../Utils/Toast";
+import  Toast  from "../Utils/Toast";
 import SignInForm from "../Component/Form/SignInForm";
 
 const submitStyle = {
@@ -33,7 +33,7 @@ export default function Login() {
       ) : (
         <SignInForm />
       )}
-      <div>{Toast()}</div>
+      <Toast/>
     </div>
   );
 }

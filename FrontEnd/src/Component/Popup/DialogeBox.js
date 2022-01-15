@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SimpleDialog({ setOpen }) {
   const [playlistname, setplaylistname] = useState([
@@ -12,8 +14,13 @@ export default function SimpleDialog({ setOpen }) {
   const [name, setname] = useState("");
 
   const AddPlaylist = () => {
-    setplaylistname([...playlistname, name]);
-    setclick(false);
+    if (name === "") {
+      toast.error("playlist name cant be empty");
+    } else {
+      setplaylistname([...playlistname, name]);
+      setname("");
+      setclick(false);
+    }
   };
 
   return (
