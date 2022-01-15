@@ -169,7 +169,7 @@ export default function DrawerAppBar() {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <HomeIcon />
+                <HomeIcon sx={{color:"black"}}/>
               </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItemButton>
@@ -180,7 +180,7 @@ export default function DrawerAppBar() {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <WatchLaterIcon />
+                <WatchLaterIcon sx={{color:"black"}}/>
               </ListItemIcon>
               <ListItemText primary="Watch Later" />
             </ListItemButton>
@@ -191,7 +191,7 @@ export default function DrawerAppBar() {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <PlaylistPlayIcon />
+                <PlaylistPlayIcon sx={{color:"black"}} />
               </ListItemIcon>
               <ListItemText primary="PlayList" />
             </ListItemButton>
@@ -202,7 +202,7 @@ export default function DrawerAppBar() {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <HistoryIcon />
+                <HistoryIcon sx={{color:"black"}}/>
               </ListItemIcon>
               <ListItemText primary="History" />
             </ListItemButton>
@@ -213,7 +213,7 @@ export default function DrawerAppBar() {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <AccountCircleIcon />
+                <AccountCircleIcon sx={{color:"black"}}/>
               </ListItemIcon>
               <ListItemText primary="User" />
             </ListItemButton>
