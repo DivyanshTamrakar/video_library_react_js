@@ -10,6 +10,7 @@ It is a video library app with the features included :
 * **User can like or dislike the video**
 * **User can see their watch history**
 * **Show recommend videos.**
+* **Realtime view count.**
 
 
 
