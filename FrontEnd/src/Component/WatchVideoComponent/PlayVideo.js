@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "react-toastify/dist/ReactToastify.css";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
@@ -22,6 +22,23 @@ function PlayVideo({ videodata }) {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+
+
+  useEffect(() => {
+    updateViews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
+  const updateViews = async () => {
+    try {
+      const response = await postData({videoid:videodata.videoid},`/videos/count/videoview`);
+      console.log(response.success);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
 
   const addtoWatchlater = async () => {
     if (login) {
@@ -142,7 +159,7 @@ function PlayVideo({ videodata }) {
         <div>
           <span style={{ display: "inline" }}>
             <small>
-              <b> 0 {videodata.views} views</b>
+              <b>{videodata.views} views</b>
             </small>
             <small>
               {" "}

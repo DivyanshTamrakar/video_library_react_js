@@ -33,7 +33,7 @@ const VideoSchema = new mongoose.Schema(
     watchlater: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     dislikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    views: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    views: { type:Number },
     avatar: {
       type: String,
       required: false,

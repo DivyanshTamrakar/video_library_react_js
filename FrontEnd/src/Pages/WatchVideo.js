@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { getData } from "../Utils/fetchApi";
+import { getData} from "../Utils/fetchApi";
 import { useParams, Link } from "react-router-dom";
 import { useHistory } from "../Context/HistoryContext";
 import { useAuth } from "../Context/AuthContext";
@@ -21,6 +21,7 @@ export default function WatchVideo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+   
   const getVideoData = async () => {
     try {
       const response = await getData(`/videos/${videoId}`);

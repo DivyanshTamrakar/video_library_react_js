@@ -43,8 +43,7 @@ router
     }
   });
 
-router
-  .route("/:videoid")
+router.route("/:videoid")
   .get(async (req, res) => {
     const videoid = req.params;
     try {
@@ -66,13 +65,6 @@ router
         message: "Cant find your video Catch We got",
       });
     }
-
-    // res.json({
-    //   success:true,
-    //   message:"Video found",
-    //   video:video
-
-    // })
   })
   .post(async (req, res) => {
     try {
@@ -182,5 +174,34 @@ router.route("/dislike/video").post(async (req, res) => {
     }
   );
 });
+
+router
+  .route("/count/videoview")
+  .post(async (req, res) => {
+      const videoid = req.body;
+      try{
+        const { views } = await Videos.findOne(videoid);
+        Videos.findOneAndUpdate( videoid , 
+          {views:views + 1}, null, function (err, docs) {
+          if (err){
+            res.json({
+              success: false,
+              message: "data upation fail",
+              error: `${err}`,
+            });
+          }
+          else{
+            res.json({
+              success: true,
+              message: "Data Updated successfully ",
+              doc: docs,
+            });
+          }
+      });
+
+      }catch(error){}
+     
+    
+  });
 
 module.exports = router;
