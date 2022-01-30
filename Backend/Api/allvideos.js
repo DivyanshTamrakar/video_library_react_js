@@ -11,7 +11,7 @@ const {
   viewCount,
   updateVideo,
   getVideoDetail,
-} = require("../controllers/videos");
+} = require("../controllers/videos.controller");
 
 router.use(bodyparser.json());
 
