@@ -1,0 +1,23 @@
+.playlist-item{
+    background-color: rgb(160, 152, 226);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.playlist-item > div{
+     font-weight: 700;
+     color: white;
+     padding: 5px;
+}
+.playlist-item > span{
+    padding: 8px;
+    border-radius: 25px;
+    background-color: yellow;
+    width: max-content;
+    font-weight: 600;
+    margin: 10px 0;
+
+
+}

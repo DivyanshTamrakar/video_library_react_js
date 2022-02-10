@@ -1,11 +1,6 @@
-var express = require("express");
-var router = express.Router();
-var { User } = require("../model/UserModel.js");
-var { extend } = require("lodash");
-var bodyparser = require("body-parser");
-router.use(bodyparser.json());
+const { User } = require("../model/UserModel");
 
-router.route("/signup").post(async (req, res) => {
+const SignUp = async (req, res) => {
   try {
     let { name, email, password, mobile } = req.body;
     const check = await User.findOne({ email });
@@ -26,9 +21,9 @@ router.route("/signup").post(async (req, res) => {
       error: `${e}`,
     });
   }
-});
+};
 
-router.route("/signin").post(async (req, res) => {
+const SignIn = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -64,6 +59,5 @@ router.route("/signin").post(async (req, res) => {
       });
     }
   }
-});
-
-module.exports = router;
+};
+module.exports = { SignUp, SignIn };

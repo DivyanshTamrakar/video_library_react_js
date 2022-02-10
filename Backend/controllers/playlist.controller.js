@@ -1,13 +1,7 @@
-var express = require("express");
-var router = express.Router();
 var { Playlist } = require("../model/Playlist");
-var { extend } = require("lodash");
-var bodyparser = require("body-parser");
-router.use(bodyparser.json());
 
-router.route("/:customerid").get(async (req, res) => {
+const customerPlaylist = async (req, res) => {
   const customerid = req.params;
-  console.log(customerid);
   try {
     const playlists = await Playlist.find(customerid);
     return res.json({
@@ -22,9 +16,8 @@ router.route("/:customerid").get(async (req, res) => {
       error: `${e}`,
     });
   }
-});
-
-router.route("/addtoplaylist").post(async (req, res) => {
+};
+const addToPlaylist = async (req, res) => {
   try {
     const { customerid, playlistname } = req.body;
 
@@ -54,6 +47,6 @@ router.route("/addtoplaylist").post(async (req, res) => {
       error: `${e}`,
     });
   }
-});
+};
 
-module.exports = router;
+module.exports = { customerPlaylist, addToPlaylist };

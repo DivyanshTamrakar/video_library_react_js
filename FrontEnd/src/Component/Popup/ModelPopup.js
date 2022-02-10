@@ -18,7 +18,7 @@ const playlistArrayItem = {
 export default function Model() {
   const [create, setcreate] = useState(false);
 
-  let { modal, setmodal, playlistArray, setlist } = usePlaylist();
+  const { modal, setmodal, playlistArray, setlist } = usePlaylist();
   let playlistName;
 
   return (
