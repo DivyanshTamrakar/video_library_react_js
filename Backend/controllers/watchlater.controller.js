@@ -1,12 +1,6 @@
-var express = require("express");
-var router = express.Router();
 var { WatchLater } = require("../model/watchLater.js");
-var { extend } = require("lodash");
-var bodyparser = require("body-parser");
 
-router.use(bodyparser.json());
-
-router.route("/").post(async (req, res) => {
+const WatchLaterHome = async (req, res) => {
   const body = req.body;
   WatchLater.exists(
     { videostreamid: body.videostreamid, userId: body.userId },
@@ -40,9 +34,9 @@ router.route("/").post(async (req, res) => {
       }
     }
   );
-});
+};
 
-router.route("/:userId").get(async (req, res) => {
+const GetWatchlaterVideo = async (req, res) => {
   const userId = req.params;
   try {
     const video = await WatchLater.find(userId);
@@ -57,9 +51,9 @@ router.route("/:userId").get(async (req, res) => {
       message: "Cant find your video Catch We got",
     });
   }
-});
+};
 
-router.route("/remove").post(async (req, res) => {
+const RemoveWatchLater = async (req, res) => {
   const { videostreamid, userId } = req.body;
   WatchLater.findOneAndDelete({ videostreamid: videostreamid, userId: userId })
     .then(function () {
@@ -75,6 +69,5 @@ router.route("/remove").post(async (req, res) => {
         error: error,
       });
     });
-});
-
-module.exports = router;
+};
+module.exports = { WatchLaterHome, GetWatchlaterVideo, RemoveWatchLater };
