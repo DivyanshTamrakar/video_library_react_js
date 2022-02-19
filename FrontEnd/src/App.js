@@ -12,8 +12,6 @@ import DrawerAppBar from "./Component/Header/DrawerAppBar";
 import Profile from "./Pages/Profile";
 import { useLoader } from "./Context/LoaderContext";
 
-
-
 function App() {
   const { loader } = useLoader();
   return (
@@ -40,10 +38,16 @@ function App() {
           }
         />
 
-        <Route path="/playlist" element={<Playlist />} />
+        <Route
+          path="/playlist"
+          element={
+            <PrivateRoute>
+              <Playlist />
+            </PrivateRoute>
+          }
+        />
         <Route path="/watch/:videoId" element={<WatchVideo />} />
         <Route path="/login" element={<Login />} />
-
 
         <Route
           path="/profile"
@@ -55,7 +59,6 @@ function App() {
         />
         <Route path="/signup" element={<Signup />} />
       </Routes>
-
     </div>
   );
 }

@@ -2,8 +2,8 @@ import React from 'react'
 
 function Profile() {
     return (
-        <div className="adjust">
-         Your Profile will Appear here;
+        <div className="noData">
+         Your Profile will Appear here!
         </div>
     )
 }
