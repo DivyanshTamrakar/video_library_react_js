@@ -1,4 +1,4 @@
-var { WatchLater } = require("../model/watchLater.js");
+var { WatchLater } = require("../model/watchLater.model.js");
 
 const WatchLaterHome = async (req, res) => {
   const body = req.body;

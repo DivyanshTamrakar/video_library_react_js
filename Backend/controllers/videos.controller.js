@@ -1,4 +1,4 @@
-const { Videos } = require("../model/AllVideos.js");
+const { Videos } = require("../model/allvideos.model.js");
 const mongoose = require("mongoose");
 
 const getAllVideos = async (req, res) => {

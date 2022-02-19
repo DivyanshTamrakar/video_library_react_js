@@ -1,4 +1,4 @@
-var { Playlist } = require("../model/Playlist");
+var { Playlist } = require("../model/playlist.model");
 
 const customerPlaylist = async (req, res) => {
   const customerid = req.params;
