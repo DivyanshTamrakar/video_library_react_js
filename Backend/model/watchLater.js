@@ -9,6 +9,10 @@ const WatchLaterSchema = new mongoose.Schema({
       type:String,
       required:"user id is mandaory",
       unique:false,    },
+    playvideoId:{
+        type:String,
+        required:"playVideoid id is mandaory",
+        unique:false,    },
     title:{
       type:String,
       required:'title required',

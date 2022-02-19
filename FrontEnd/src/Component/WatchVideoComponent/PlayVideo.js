@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
@@ -23,22 +23,22 @@ function PlayVideo({ videodata }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
-
   useEffect(() => {
     updateViews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const updateViews = async () => {
     try {
-      const response = await postData({videoid:videodata.videoid},`/videos/count/videoview`);
+      const response = await postData(
+        { videoid: videodata.videoid },
+        `/videos/count/videoview`
+      );
       console.log(response.success);
     } catch (e) {
       console.log(e);
     }
   };
-
 
   const addtoWatchlater = async () => {
     if (login) {
@@ -48,6 +48,7 @@ function PlayVideo({ videodata }) {
         title: videodata.title,
         url: videodata.url,
         releaseDate: videodata.releaseDate,
+        playvideoId : videodata._id
       };
       try {
         await postData(body, "/watchlater");
@@ -209,7 +210,7 @@ function PlayVideo({ videodata }) {
         </div>
       </div>
       {open && <SimpleDialog setOpen={setOpen} />}
-      <Toast/>
+      <Toast />
     </div>
   );
 }
