@@ -1,16 +1,19 @@
 import React from "react";
 import ReactPlayer from "react-player";
 
-function Recommend({ id, url, title }) {
+function Recommend({ id, url, title, play, setplay }) {
+
+  
   return (
     <div className="Recommended-videos">
       <div>
         <ReactPlayer
           url={url}
-          playing={false}
+          playing={play.right}
           width="100%"
           height="100%"
           controls={false}
+          onPlay={()=>setplay({left:false,right:true})}
         />
       </div>
       <div className="Recommended-videos-title text-align-left">{title}</div>

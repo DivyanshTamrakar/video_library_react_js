@@ -14,6 +14,10 @@ export default function WatchVideo() {
   const [recommend, setrecommend] = useState([]);
   const { itemInhistoy, setIteminhistory } = useHistory();
   const { check } = useAuth();
+  const [play,setplay] = useState({
+    left:true,
+    right:false
+  });
 
   useEffect(() => {
     check();
@@ -39,7 +43,7 @@ export default function WatchVideo() {
   return (
     <div className="WatchVideoPage adjust">
       <div className="left-section">
-        {result.watchlater?.length >= 0 && <PlayVideo videodata={result} />}
+        {result.watchlater?.length >= 0 && <PlayVideo videodata={result} play={play} setplay = {setplay} />}
       </div>
 
       <div className="right-section">
@@ -60,7 +64,7 @@ export default function WatchVideo() {
                   style={{ textDecoration: "none" }}
                   to={`/watch/${item.videoid}`}
                 >
-                  <Recommend id={item.id} title={item.title} url={item.url} />
+                  <Recommend id={item.id} title={item.title} url={item.url} play={play} setplay = {setplay} />
                 </Link>
               </div>
             );

@@ -14,7 +14,7 @@ import { useNavigate } from "react-router";
 import SimpleDialog from "../Popup/DialogeBox";
 import Toast from "../../Utils/Toast";
 
-function PlayVideo({ videodata }) {
+function PlayVideo({ videodata , play, setplay}) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
   const [likes, setlikes] = useState(videodata.likes);
   const [dislikes, setdislikes] = useState(videodata.dislikes);
@@ -142,10 +142,11 @@ function PlayVideo({ videodata }) {
         <ReactPlayer
           url={videodata.url}
           className="react-player"
-          playing={false}
+          playing={play.left}
           width="100%"
           height="100%"
           controls={true}
+          onPlay={()=>setplay({left:true,right:false})}
         />
       </div>
 
