@@ -25,7 +25,11 @@ export default function Playlist() {
       <h2 style={{ textAlign: "left", margin: "96px 0 20px 0" }}>
         Your Playlist
       </h2>
-      <ShowPlaylists playlists={playlist} />
+      {playlist.length > 0 ? (
+        <ShowPlaylists playlists={playlist} />
+      ) : (
+        <diV className='noData'>You don't have any playlist!</diV>
+      )}
     </div>
   );
 }

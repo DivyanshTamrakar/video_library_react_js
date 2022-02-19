@@ -11,11 +11,16 @@ export default function History() {
         <div>
           <b>Watch History</b>
         </div>
-        {itemInhistoy.map(function (item) {
-          return (
-            <HistoryCard item={item}/>
-          );
-        })}
+        {
+          itemInhistoy.length> 0 ? 
+          itemInhistoy.map(function (item) {
+            return (
+              <HistoryCard item={item}/>
+            );
+          })
+          :
+          <div className="noData">No watch history found!</div>
+        }
       </div>
 
       <div className="history-right"></div>

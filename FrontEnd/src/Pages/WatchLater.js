@@ -53,7 +53,7 @@ function WatchLater() {
           )}
         </div>
       ) : (
-        <div className="adjust">No Video Found</div>
+        <div className="noData">You don't have any videos on watchLater!</div>
       )}
     </div>
   );
