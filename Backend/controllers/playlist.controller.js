@@ -1,4 +1,5 @@
 var { Playlist } = require("../model/playlist.model");
+const mongoose = require("mongoose");
 
 const customerPlaylist = async (req, res) => {
   const customerid = req.params;
@@ -48,5 +49,49 @@ const addToPlaylist = async (req, res) => {
     });
   }
 };
+const addVideoToPlaylist = async (req,res) =>{
 
-module.exports = { customerPlaylist, addToPlaylist };
+  const { individualplaylistId, userid } = req.body;
+  const id = mongoose.Types.ObjectId(userid);
+
+  Playlist.findByIdAndUpdate(
+    { _id: individualplaylistId, customerid:userid },
+    { $push: { playlistItem: id } },
+    { new: true },
+    function (err, docs) {
+      if (err) {
+        res.json({ success: false, error: err });
+      } else {
+        res.json({
+          success: true,
+          message: "Data Updated Successfully",
+          result: docs,
+        });
+      }
+    }
+  );
+}
+const removeVideoToPlaylist = async (req,res) =>{
+
+  const { individualplaylistId, userid } = req.body;
+  const id = mongoose.Types.ObjectId(userid);
+
+  Playlist.findByIdAndUpdate(
+    { _id: individualplaylistId, customerid:userid },
+    { $pull: { playlistItem: id } },
+    { new: true },
+    function (err, docs) {
+      if (err) {
+        res.json({ success: false, error: err });
+      } else {
+        res.json({
+          success: true,
+          message: "Data Updated Successfully",
+          result: docs,
+        });
+      }
+    }
+  );
+}
+
+module.exports = { customerPlaylist, addToPlaylist, addVideoToPlaylist,removeVideoToPlaylist };

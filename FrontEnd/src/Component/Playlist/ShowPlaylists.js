@@ -7,8 +7,7 @@ function ShowPlaylists({ playlists }) {
       {playlists.map((item) => (
         <div className="playlist-item cursor" key={item._id}>
           <div>{item?.playlistname}</div>
-          <div>0 Videos</div>
-          <span className="playlistbutton">view-playlist</span>
+          <div>{item.playlistItem.length} Videos</div>
         </div>
       ))}
     </div>

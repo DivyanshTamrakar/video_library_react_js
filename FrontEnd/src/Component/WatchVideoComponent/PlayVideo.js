@@ -14,7 +14,7 @@ import { useNavigate } from "react-router";
 import SimpleDialog from "../Popup/DialogeBox";
 import Toast from "../../Utils/Toast";
 
-function PlayVideo({ videodata , play, setplay}) {
+function PlayVideo({ videodata, play, setplay }) {
   const [watchlater, setwatchlater] = useState(videodata.watchlater);
   const [likes, setlikes] = useState(videodata.likes);
   const [dislikes, setdislikes] = useState(videodata.dislikes);
@@ -30,11 +30,10 @@ function PlayVideo({ videodata , play, setplay}) {
 
   const updateViews = async () => {
     try {
-      const response = await postData(
+      await postData(
         { videoid: videodata.videoid },
         `/videos/count/videoview`
       );
-      console.log(response.success);
     } catch (e) {
       console.log(e);
     }
@@ -48,7 +47,7 @@ function PlayVideo({ videodata , play, setplay}) {
         title: videodata.title,
         url: videodata.url,
         releaseDate: videodata.releaseDate,
-        playvideoId : videodata._id
+        playvideoId: videodata._id,
       };
       try {
         await postData(body, "/watchlater");
@@ -146,7 +145,7 @@ function PlayVideo({ videodata , play, setplay}) {
           width="100%"
           height="100%"
           controls={true}
-          onPlay={()=>setplay({left:true,right:false})}
+          onPlay={() => setplay({ left: true, right: false })}
         />
       </div>
 

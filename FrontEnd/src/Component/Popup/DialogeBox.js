@@ -16,6 +16,7 @@ export default function SimpleDialog({ setOpen }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [click]);
 
+  
   const getUserPlaylists = async () => {
     try {
       const response = await getData(`/playlist/${userid}`);
@@ -49,6 +50,36 @@ export default function SimpleDialog({ setOpen }) {
     }
   };
 
+  const handleChange = async (e) => {
+    const checked = e.target.checked;
+    const checkedValue = e.target.value;
+    if (checked) {
+      try {
+        await postData(
+          {
+            individualplaylistId: checkedValue,
+            userid: userid,
+          },
+          "/playlist/addVideoToPlaylist"
+        );
+      } catch (e) {
+        console.error("Error in AuhtContext ", e);
+      }
+    } else {
+      try {
+        await postData(
+          {
+            individualplaylistId: checkedValue,
+            userid: userid,
+          },
+          "/playlist/removeVideoToPlaylist"
+        );
+      } catch (e) {
+        console.error("Error in AuhtContext ", e);
+      }
+    }
+  };
+
   return (
     <div className="centerdiv">
       <div className="dialogueHead">
@@ -62,10 +93,17 @@ export default function SimpleDialog({ setOpen }) {
         {playlistname.length ? (
           <span>
             {playlistname.map((item, index) => {
-              return (
+              return ( 
                 <div key={index} className="show-playlist">
-                  <div className="items">{item.playlistname}</div>
-                  <input type="checkbox" />
+                  <label className="items">{item.playlistname}</label>
+                  <input
+                    type="checkbox"
+                    name="name"
+                    id={item._id}
+                    value={item._id}
+                    onChange={handleChange}
+                    checkedValue
+                  />
                 </div>
               );
             })}
@@ -74,6 +112,7 @@ export default function SimpleDialog({ setOpen }) {
           "You dont have any playlist"
         )}
       </div>
+
       {!click && (
         <Button
           sx={{ width: "100%", margin: "10px 0px" }}
