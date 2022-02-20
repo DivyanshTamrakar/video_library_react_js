@@ -10,13 +10,13 @@ export default function SimpleDialog({ setOpen }) {
   const [playlistname, setplaylistname] = useState([]);
   const [click, setclick] = useState(false);
   const [name, setname] = useState("");
+  const [up, setup] = useState(false);
 
   useEffect(() => {
     getUserPlaylists();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [click]);
+  }, [click,up]);
 
-  
   const getUserPlaylists = async () => {
     try {
       const response = await getData(`/playlist/${userid}`);
@@ -55,25 +55,31 @@ export default function SimpleDialog({ setOpen }) {
     const checkedValue = e.target.value;
     if (checked) {
       try {
-        await postData(
+        const res = await postData(
           {
             individualplaylistId: checkedValue,
             userid: userid,
           },
           "/playlist/addVideoToPlaylist"
         );
+        if (res.success) {
+          setup(!up)
+        }
       } catch (e) {
         console.error("Error in AuhtContext ", e);
       }
     } else {
       try {
-        await postData(
+        const res = await postData(
           {
             individualplaylistId: checkedValue,
             userid: userid,
           },
           "/playlist/removeVideoToPlaylist"
         );
+        if (res.success) {
+          setup(!up)
+        }
       } catch (e) {
         console.error("Error in AuhtContext ", e);
       }
@@ -93,7 +99,7 @@ export default function SimpleDialog({ setOpen }) {
         {playlistname.length ? (
           <span>
             {playlistname.map((item, index) => {
-              return ( 
+              return (
                 <div key={index} className="show-playlist">
                   <label className="items">{item.playlistname}</label>
                   <input
@@ -102,7 +108,7 @@ export default function SimpleDialog({ setOpen }) {
                     id={item._id}
                     value={item._id}
                     onChange={handleChange}
-                    checked = {item.playlistItem.includes(userid)} 
+                    checked={item.playlistItem.includes(userid)}
                   />
                 </div>
               );
