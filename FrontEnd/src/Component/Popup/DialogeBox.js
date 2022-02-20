@@ -102,7 +102,7 @@ export default function SimpleDialog({ setOpen }) {
                     id={item._id}
                     value={item._id}
                     onChange={handleChange}
-                    checkedValue
+                    checked = {item.playlistItem.includes(userid)} 
                   />
                 </div>
               );
