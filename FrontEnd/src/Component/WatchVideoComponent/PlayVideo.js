@@ -209,7 +209,7 @@ function PlayVideo({ videodata, play, setplay }) {
           </span>
         </div>
       </div>
-      {open && <SimpleDialog setOpen={setOpen} />}
+      {open && <SimpleDialog setOpen={setOpen} videoObjectId = {videodata._id} />}
       <Toast />
     </div>
   );

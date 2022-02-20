@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postData, getData } from "../../Utils/fetchApi";
 
-export default function SimpleDialog({ setOpen }) {
+export default function SimpleDialog({ setOpen,videoObjectId }) {
   const userid = localStorage.getItem("userId");
   const [playlistname, setplaylistname] = useState([]);
   const [click, setclick] = useState(false);
@@ -58,7 +58,7 @@ export default function SimpleDialog({ setOpen }) {
         const res = await postData(
           {
             individualplaylistId: checkedValue,
-            userid: userid,
+            userid: videoObjectId,
           },
           "/playlist/addVideoToPlaylist"
         );
@@ -73,7 +73,7 @@ export default function SimpleDialog({ setOpen }) {
         const res = await postData(
           {
             individualplaylistId: checkedValue,
-            userid: userid,
+            userid: videoObjectId,
           },
           "/playlist/removeVideoToPlaylist"
         );
@@ -108,7 +108,7 @@ export default function SimpleDialog({ setOpen }) {
                     id={item._id}
                     value={item._id}
                     onChange={handleChange}
-                    checked={item.playlistItem.includes(userid)}
+                    checked={item.playlistItem.includes(videoObjectId)}
                   />
                 </div>
               );
